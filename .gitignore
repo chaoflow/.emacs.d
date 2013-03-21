@@ -1,0 +1,14 @@
+*.elc
+*~
+.DS_Store
+/.places
+/.yas-compiled-snippets.el
+/auto-save-list
+/backups
+/elpa
+/emms
+/session.*
+/site-lisp/adventur-mode
+/swank
+/tramp
+/url/cache
