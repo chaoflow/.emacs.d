@@ -58,14 +58,14 @@
 ;; (define-key global-map (kbd "C-ø") 'ace-jump-mode)
 
 ;; ;; Perform general cleanup.
-;; (global-set-key (kbd "C-c n") 'cleanup-buffer)
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
 ;; (global-set-key (kbd "C-c C-<return>") 'delete-blank-lines)
 
 ;; ;; M-i for back-to-indentation
 ;; (global-set-key (kbd "M-i") 'back-to-indentation)
 
 ;; ;; Turn on the menu bar for exploring new modes
-;; (global-set-key (kbd "C-<f10>") 'menu-bar-mode)
+(global-set-key (kbd "C-<f10>") 'menu-bar-mode)
 
 ;; ;; Use shell-like backspace C-h, rebind help to F1
 ;; (define-key key-translation-map [?\C-h] [?\C-?])
@@ -120,7 +120,7 @@
 ;; (define-key global-map (kbd "C-x C-n") 'make-frame-command)
 
 ;; ;; Jump to a definition in the current file. (This is awesome)
-;; (global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "C-x C-i") 'ido-imenu)
 
 ;; ;; File finding
 ;; (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
@@ -130,7 +130,7 @@
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 ;; (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
-;; (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; ;; toggle two most recent buffers
 ;; (fset 'quick-switch-buffer [?\C-x ?b return])
