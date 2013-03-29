@@ -141,7 +141,7 @@ lines of the top of the window."
    (let ((lines-from-window-top
           (smooth-scroll-lines-from-window-top)))
      (and
-      (message "%s" lines-from-window-top)
+      ;; (message "%s" lines-from-window-top)
       ;; Only scroll down if we're within the top margin
       (<= lines-from-window-top smooth-scroll-margin)
       ;; Only scroll down if we're in the top half of the window
@@ -165,7 +165,7 @@ lines of the bottom of the window."
    (let ((lines-from-window-bottom
           (smooth-scroll-lines-from-window-bottom)))
      (and
-      (message "%s" lines-from-window-bottom)
+      ;; (message "%s" lines-from-window-bottom)
       ;; Only scroll up if we're within the bottom margin
       (<= lines-from-window-bottom smooth-scroll-margin)
       ;; Only scroll up if we're in the bottom half of the window.
