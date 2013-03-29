@@ -71,11 +71,8 @@
 
      ;; Add custom keybindings
      (define-key grep-mode-map "q" 'rgrep-quit-window)
-     (define-key grep-mode-map (kbd "C-<return>") 'rgrep-goto-file-and-close-rgrep)
      (define-key grep-mode-map (kbd "C-x C-s") 'wgrep-save-all-buffers)
 
-     ;; Use same keybinding as occur
-     (setq wgrep-enable-key "e")))
 
 ;; Command to add cursor to all matches in wgrep
 
@@ -111,9 +108,18 @@
     (goto-char it))
   (mc/maybe-multiple-cursors-mode))
 
-(add-to-list 'mc--default-cmds-to-run-once 'mc/add-cursors-to-all-matches)
+(eval-after-load 'multiple-cursors-core
+  '(add-to-list 'mc--default-cmds-to-run-once 'mc/add-cursors-to-all-matches))
 
-(eval-after-load "wgrep"
-  '(define-key wgrep-mode-map (kbd "C-c C-æ") 'mc/add-cursors-to-all-matches))
+;; wgrep settings
+
+(eval-after-load 'wgrep
+  '(progn 
+     ;; Use same keybinding as occur
+     (setq wgrep-enable-key "e")
+     (define-key grep-mode-map (kbd "C-x C-s") 'wgrep-save-all-buffers)
+     (eval-after-load 'multiple-cursors-core
+       '(define-key wgrep-mode-map (kbd "C-c C-æ") 'mc/add-cursors-to-all-matches))))
+
 
 (provide 'setup-rgrep)
