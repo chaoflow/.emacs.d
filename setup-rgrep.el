@@ -62,17 +62,14 @@
     (delete-other-windows)
     (beginning-of-buffer)))
 
-(eval-after-load "grep"
-  '(progn
-     ;; Don't recurse into some directories
-     (add-to-list 'grep-find-ignored-directories "target")
-     (add-to-list 'grep-find-ignored-directories "node_modules")
-     (add-to-list 'grep-find-ignored-directories "vendor")
+;; Don't recurse into some directories
+(add-to-list 'grep-find-ignored-directories "target")
+(add-to-list 'grep-find-ignored-directories "node_modules")
+(add-to-list 'grep-find-ignored-directories "vendor")
 
-     ;; Add custom keybindings
-     (define-key grep-mode-map "q" 'rgrep-quit-window)
-     (define-key grep-mode-map (kbd "C-x C-s") 'wgrep-save-all-buffers)
-
+;; Add custom keybindings
+(define-key grep-mode-map "q" 'rgrep-quit-window)
+(define-key grep-mode-map (kbd "C-<return>") 'rgrep-goto-file-and-close-rgrep)
 
 ;; Command to add cursor to all matches in wgrep
 
@@ -96,9 +93,8 @@
         (while (re-search-forward "\033\\[0?1;31m\\(.*?\\)\033\\[[0-9]*m" end 1)
           (add-to-list 'grep-match-positions (set-marker (make-marker) (match-beginning 1))))))))
 
-(eval-after-load "grep"
-  '(defadvice grep-mode (after grep-register-match-positions activate)
-     (add-hook 'compilation-filter-hook 'grep-register-match-positions nil t)))
+(defadvice grep-mode (after grep-register-match-positions activate)
+   (add-hook 'compilation-filter-hook 'grep-register-match-positions nil t))
 
 (defun mc/add-cursors-to-all-matches ()
   (interactive)
