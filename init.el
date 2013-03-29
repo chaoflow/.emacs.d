@@ -6,6 +6,11 @@
 ;; ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
 
+;; Ease debugging, as it allows to test with
+;; emacs -q -l ~/path/to/other/.emacs.d/init.el
+(setq user-emacs-directory
+      (file-name-directory (or load-file-name (buffer-file-name))))
+
 ;; Set path to dependencies
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
