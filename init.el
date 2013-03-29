@@ -31,7 +31,7 @@
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-settings-dir))
-(load custom-file)
+(load custom-file 'noerror)
 
 ;; Write backup files to own directory
 (setq backup-directory-alist
