@@ -84,7 +84,6 @@
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
-;; (eval-after-load 'org '(require 'setup-org))
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
 (eval-after-load 'grep '(require 'setup-rgrep))
@@ -100,6 +99,7 @@
 (eval-after-load 'python '(require 'setup-python))
 (eval-after-load 'sgml-mode '(require 'setup-html-mode))
 (eval-after-load 'lisp-mode '(require 'setup-lisp))
+(require 'setup-org)
 (require 'setup-latex)
 ;; (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
 ;; (eval-after-load 'clojure-mode '(require 'setup-clojure-mode))

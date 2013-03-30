@@ -1,3 +1,6 @@
+
+(add-to-list 'load-path (concat site-lisp-dir "/org-mode/lisp"))
+
 (defun myorg-update-parent-cookie ()
   (when (equal major-mode 'org-mode)
     (save-excursion
@@ -16,12 +19,10 @@
     (setq Info-directory-list (append Info-directory-list
                                       Info-default-directory-list))
   (setq Info-directory-list Info-default-directory-list))
-(setq Info-directory-list
-      (cons (expand-file-name
-             "doc"
-             (expand-file-name
-              "org-mode"
-              (expand-file-name "site-lisp" user-emacs-directory)))
-            Info-directory-list))
+(add-to-list 'Info-directory-list
+             (concat site-lisp-dir "/org-mode/doc"))
+
+(setq org-src-fontify-natively t
+      org-src-tab-acts-natively t)
 
 (provide 'setup-org)
