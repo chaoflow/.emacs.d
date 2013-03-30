@@ -4,7 +4,7 @@
 (add-to-list 'auto-mode-alist '("jsTestDriver\\.conf$" . yaml-mode))
 
 ;; Emacs lisp
-(add-to-list 'auto-mode-alist '("Carton$" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.el$" . emacs-lisp-mode))
 
 ;; CSS
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))

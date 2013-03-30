@@ -61,7 +61,7 @@
    (cons 'rainbow-delimiters marmalade)
 ;;    (cons 'exec-path-from-shell melpa)
    (cons 'magit melpa)
-;;    (cons 'paredit melpa)
+   (cons 'paredit melpa)
 ;;    (cons 'move-text melpa)
 ;;    (cons 'gist melpa)
 ;;    (cons 'htmlize melpa)
@@ -104,6 +104,7 @@
 ;; Language specific setup files
 ;; (eval-after-load 'js2-mode '(require 'setup-js2-mode))
 (eval-after-load 'python '(require 'setup-python))
+(eval-after-load 'lisp-mode '(require 'setup-lisp))
 ;; (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
 ;; (eval-after-load 'clojure-mode '(require 'setup-clojure-mode))
 ;; (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
