@@ -7,7 +7,7 @@
 (add-to-list 'auto-mode-alist '("\\.el$" . emacs-lisp-mode))
 
 ;; CSS
-(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
 ;; Cucumber
 (autoload 'feature-mode "feature-mode")
