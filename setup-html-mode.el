@@ -25,27 +25,30 @@
     (indent-region beg (+ end 11))
     (goto-char (+ beg 4))))
 
-(eval-after-load "sgml-mode"
-  '(progn
-     (define-key html-mode-map [remap forward-paragraph] 'skip-to-next-blank-line)
-     (define-key html-mode-map [remap backward-paragraph] 'skip-to-previous-blank-line)
-     (define-key html-mode-map (kbd "C-c C-w") 'html-wrap-in-tag)
-     (define-key html-mode-map (kbd "/") nil) ;; no buggy matching of slashes
+(add-hook 'sgml-mode-hook
+          (lambda ()
+            (require 'rename-sgml-tag)
+            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
 
-     (require 'tagedit)
+(define-key html-mode-map [remap forward-paragraph] 'skip-to-next-blank-line)
+(define-key html-mode-map [remap backward-paragraph] 'skip-to-previous-blank-line)
+(define-key html-mode-map (kbd "C-c C-w") 'html-wrap-in-tag)
+(define-key html-mode-map (kbd "/") nil) ;; no buggy matching of slashes
 
-     ;; paredit lookalikes
-     (define-key html-mode-map (kbd "s-<right>") 'tagedit-forward-slurp-tag)
-     (define-key html-mode-map (kbd "C-)") 'tagedit-forward-slurp-tag)
-     (define-key html-mode-map (kbd "s-<left>") 'tagedit-forward-barf-tag)
-     (define-key html-mode-map (kbd "C-}") 'tagedit-forward-barf-tag)
-     (define-key html-mode-map (kbd "M-r") 'tagedit-raise-tag)
+(require 'tagedit)
 
-     (tagedit-add-experimental-features)
-     (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))
+;; paredit lookalikes
+(define-key html-mode-map (kbd "s-<right>") 'tagedit-forward-slurp-tag)
+(define-key html-mode-map (kbd "C-)") 'tagedit-forward-slurp-tag)
+(define-key html-mode-map (kbd "s-<left>") 'tagedit-forward-barf-tag)
+(define-key html-mode-map (kbd "C-}") 'tagedit-forward-barf-tag)
+(define-key html-mode-map (kbd "M-r") 'tagedit-raise-tag)
 
-     ;; no paredit equivalents
-     (define-key html-mode-map (kbd "s-k") 'tagedit-kill-attribute)
-     (define-key html-mode-map (kbd "s-<return>") 'tagedit-toggle-multiline-tag)))
+(tagedit-add-experimental-features)
+(add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))
+
+;; no paredit equivalents
+(define-key html-mode-map (kbd "s-k") 'tagedit-kill-attribute)
+(define-key html-mode-map (kbd "s-<return>") 'tagedit-toggle-multiline-tag)
 
 (provide 'setup-html-mode)
