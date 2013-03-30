@@ -29,10 +29,6 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-settings-dir))
-(load custom-file 'noerror)
-
 ;; Write backup files to own directory
 (setq backup-directory-alist
       `(("." . ,(expand-file-name "backups" user-emacs-directory))))
@@ -174,6 +170,10 @@
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-settings-dir))
+(load custom-file 'noerror)
 
 ;; Conclude init by setting up specifics for the current user
 (when (file-exists-p user-settings-dir)
