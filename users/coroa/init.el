@@ -53,7 +53,7 @@
 ;;; folding
 (defun jao-toggle-selective-display (column)
   (interactive "P")
-  (set-selective-display 
+  (set-selective-display
    (if selective-display nil (or column (current-column)))))
 
 (add-hook 'coding-hook (lambda () (local-set-key (kbd "C-c f") 'jao-toggle-selective-display)))
@@ -143,7 +143,7 @@
       ;; erc-autojoin-channels-alist '(("freenode.net" "#bewelcome" "#patterns"))
       erc-hide-list '("JOIN" "NICK" "PART" "QUIT" "MODE"))
       ;; #1987.4
-  
+
 (add-hook 'erc-echo-notice-hook 'erc-echo-notice-in-minibuffer)
 
 (defun erc-pumuckl ()

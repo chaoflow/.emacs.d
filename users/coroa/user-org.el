@@ -9,7 +9,6 @@
 (setq org-log-into-drawer t
       org-todo-keywords '((sequence "❢" "✔"))
       org-footnote-auto-adjust t
-      
       ;; org-goto-interface 'outline-path-completion
       )
 
@@ -53,7 +52,7 @@
   (let ((citation (reftex-citation t)))
     (org-open-link-from-string
      (format "[[notes:%s]]" (if (listp citation) (car citation) citation)))))
-  
+
 (defun org-mode-reftex-setup ()
   (and (buffer-file-name)
        (file-exists-p (buffer-file-name))
@@ -65,10 +64,10 @@
           (?p . "[[papers:%l][%l-pdf]]")
           (?t . "%t")
           (?h . "%t\n:PROPERTIES:\n:Custom_ID: %l\n:END:\n[[papers:%l][%l-pdf]]\n%z"))))
-    
+
   (local-set-key (kbd "C-c )") 'reftex-citation)
   (local-set-key (kbd "C-c (") 'org-mode-reftex-search))
-  
+
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
 (setq org-link-abbrev-alist
@@ -77,7 +76,7 @@
         ("papers" . "~/papers/%s.pdf")
         ("xoj" . "~/papers/%s.xoj")))
 
-(org-add-link-type 
+(org-add-link-type
  "cite"
  (lambda (path) (org-open-file "~/papers/papers.org" nil nil (concat "#" path)))
  (lambda (path desc format)
