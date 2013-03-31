@@ -1,9 +1,12 @@
 ;;; theme
-(require 'tango-dark-better-highlight-theme)
-(setq custom-safe-themes '("0932a7aca2fa2f1649c689dadb8e8506a98e7d9083ca2780e1520c9854264b5b" default))
-
+(add-to-list 'custom-theme-load-path user-settings-dir)
+(setq custom-safe-themes '("4742e7b5664c09989997119e29b0e07198659e4f2e8484a5cd7c11a39ab102e1" default))
 (load-theme 'tango-dark-better-highlight)
 
+(eval-after-load 'setup-magit
+  '(progn
+     (set-face-attribute 'magit-item-highlight nil :background "#414a4d")
+     (set-face-attribute 'magit-diff-none nil :inherit 'none)))
 ;;; ffap
 (require 'ffap)
 

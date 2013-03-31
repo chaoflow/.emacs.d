@@ -83,7 +83,6 @@
  '(semantic-decoration-on-unparsed-includes ((((class color) (min-colors 89)) (:background "#41423f"))))
  '(semantic-tag-boundary-face ((((class color) (min-colors 89)) (:overline "#729fcf"))))
  '(semantic-unmatched-syntax-face ((((class color) (min-colors 89)) (:underline "#ef2929"))))
- '(default ((t (:background "#2e3436" :foreground "#eeeeec"))))
- '(magit-item-highlight ((t (:background "#414a4d")))))
+ '(default ((t (:background "#2e3436" :foreground "#eeeeec")))))
 
 (provide-theme 'tango-dark-better-highlight)
