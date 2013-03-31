@@ -16,6 +16,7 @@
 
 ;; include the contrib code for org-notmuch
 (add-to-list 'load-path "/var/run/current-system/sw/share/org/contrib/lisp" )
+;; (add-to-list 'load-path (concat site-lisp-dir "/org-mode/contrib/lisp"))
 (require 'org)
 (require 'org-notmuch)
 
