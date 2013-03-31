@@ -7,6 +7,10 @@
   '(progn
      (set-face-attribute 'magit-item-highlight nil :background "#414a4d")
      (set-face-attribute 'magit-diff-none nil :inherit 'none)))
+
+;;; diff extras
+(setq diff-switches "-u")
+
 ;;; ffap
 (require 'ffap)
 
