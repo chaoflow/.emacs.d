@@ -7,7 +7,10 @@
 
 (eval-after-load 'c-mode '(add-hook 'c-mode-hook 'run-coding-hook))
 (eval-after-load 'python-mode '(add-hook 'python-mode-hook 'run-coding-hook))
-(eval-after-load 'lisp-mode '(add-hook 'lisp-mode-hook 'run-coding-hook))
+(eval-after-load 'lisp-mode
+  '(progn
+     (add-hook 'lisp-mode-hook 'run-coding-hook)
+     (add-hook 'emacs-lisp-mode-hook 'run-coding-hook)))
 (eval-after-load 'js2-mode '(add-hook 'js2-mode-hook 'run-coding-hook))
 (eval-after-load 'sgml-mode '(add-hook 'sgml-mode-hook 'run-coding-hook))
 
