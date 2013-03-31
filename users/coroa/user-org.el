@@ -4,7 +4,8 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c l") 'org-store-link)
 
-(define-key org-mode-map (kbd "C-c f") 'org-footnote-action)
+(eval-after-load 'org
+ '(define-key org-mode-map (kbd "C-c f") 'org-footnote-action))
 
 (setq org-log-into-drawer t
       org-todo-keywords '((sequence "❢" "✔"))

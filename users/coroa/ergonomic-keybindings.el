@@ -33,7 +33,7 @@
 
 ;;; Code:
 ;;; CURSOR MOVEMENTS
-  
+
 ;; Single char cursor movement
 (global-set-key (kbd "M-n") 'backward-char) ; was none
 (global-set-key (kbd "M-i") 'forward-char)  ; was tab-to-tab-stop
@@ -43,7 +43,7 @@
 ;; Move by word
 (global-set-key (kbd "M-l") 'backward-word) ; was downcase-word
 (global-set-key (kbd "M-y") 'forward-word) ; was yank-pop
-  
+
 ;; Move by paragraph
 (global-set-key (kbd "M-L") 'backward-paragraph) ; was none
 (global-set-key (kbd "M-Y") 'forward-paragraph) ; was none
@@ -67,17 +67,17 @@
 
 (global-set-key (kbd "M-'") 'recenter)  ; was abbrev-prefix-mark
 
-  
+
 ;;; MAJOR EDITING COMMANDS
 ;(global-set-key (kbd "C-<backspace>") 'backward-delete-char-untabify)
 ;; was set-mark-command
-  
-;; Delete previous word. 
+
+;; Delete previous word.
 (global-set-key (kbd "M-s") 'delete-char) ; was paredit-splice-sexp
-  
+
 ; Delete previous word.
 (global-set-key (kbd "M-S") 'kill-word) ; was paredit-split-sexp
-  
+
 ; Copy Cut Paste, Paste previous
 ;(global-set-key (kbd "M-w") 'kill-region)     ; was kill-ring-save
 (global-set-key (kbd "M-f") 'kill-region)  ; was forward-word
@@ -87,10 +87,10 @@
 ; browse kill ring
 ;(global-set-key (kbd "M-Y") 'browse-kill-ring)
 
-  
-; Undo 
+
+; Undo
 ;(global-set-key (kbd "M-d") 'undo) ; was kill-word
-  
+
 ; Kill line
 ;; (global-set-key (kbd "M-t") 'kill-line) ; was transpose-words
 ;(global-unset-key (kbd "C-k")) ; was kill-line; prevent unintentional deletion of line
@@ -103,26 +103,26 @@
 ;;   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
 ;; (global-set-key (kbd "M-T") 'copy-line) ; was none
-  
+
 ;;; Textual Transformation
-  
-  
-  
+
+
+
 ;;; EMACS'S SPECIAL COMMANDS
-  
+
 ; Mark point. 32 is the ascii code for space
 (global-set-key (kbd "M-SPC") 'set-mark-command) ; was just-one-space
 (global-set-key (kbd "M-S-SPC") 'mark-paragraph) ; was none
-  
+
 ;(global-set-key (kbd "M-a") 'execute-extended-command) ; was backward-sentence
-  
+
 ;;; WINDOW SPLITING
 (global-set-key (kbd "M-3") 'split-window-horizontally); was digit argument
 (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
 (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
 ;(global-set-key (kbd "M-s") 'other-window) ; was center-line
-  
+
 
 ; line scrolling
 (defun scroll-down-one-line ()
@@ -145,11 +145,17 @@
 
   (local-set-key (kbd "M-h") 'org-forward-sentence)
   (local-set-key (kbd "M-H") 'org-backward-sentence)
-  
+
+  (local-set-key (kbd "M-n") 'backward-char) ; was org-shiftdown
   (local-set-key (kbd "M-N") 'org-beginning-of-line) ; was none
   (local-set-key (kbd "M-I") 'org-end-of-line) ; was org-toggle-iimage-in-org
 
   (local-set-key (kbd "M-p") 'org-yank)            ; was none
+
+  (local-set-key (kbd "M-W") 'org-shiftup)
+  (local-set-key (kbd "M-R") 'org-shiftdown)
+  (local-set-key (kbd "M-A") 'org-shiftleft)
+  (local-set-key (kbd "M-S") 'org-shiftright)
   )
 (add-hook 'org-mode-hook 'org-mode-fix-kbd)
 
