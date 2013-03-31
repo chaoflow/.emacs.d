@@ -53,6 +53,12 @@
 
 ;;; extra minor modes
 
+(defun turn-on-orgstruct-mode ()
+  (orgstruct-mode t)
+  (make-local-variable 'org-footnote-auto-label)
+  (setq org-footnote-auto-label 'plain)
+  (local-set-key (kbd "C-c f") 'org-footnote-action))
+
 (defun turn-on-epa-mail-mode ()
   (epa-mail-mode 1))
 
