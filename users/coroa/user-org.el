@@ -1,17 +1,21 @@
 ;;; org
 
+(require 'org)
+
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c l") 'org-store-link)
 
-(eval-after-load 'org
- '(define-key org-mode-map (kbd "C-c f") 'org-footnote-action))
+(define-key org-mode-map (kbd "C-c f") 'org-footnote-action)
 
 (setq org-log-into-drawer t
       org-todo-keywords '((sequence "❢" "✔"))
       org-footnote-auto-adjust t
       ;; org-goto-interface 'outline-path-completion
       )
+
+;;; auto-fill
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;;; encryption using org-crypt
 (require 'org-crypt)
