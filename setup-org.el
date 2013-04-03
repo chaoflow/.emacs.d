@@ -23,6 +23,7 @@
              (concat site-lisp-dir "/org-mode/doc"))
 
 (setq org-src-fontify-natively t
-      org-src-tab-acts-natively t)
+      org-src-tab-acts-natively t
+      org-startup-indented t)
 
 (provide 'setup-org)
