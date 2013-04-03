@@ -1,7 +1,10 @@
 SUBMODULE_MAKEFILES = $(wildcard site-lisp/*/Makefile)
 
-all:
-	# in shell: for x in $(SUBMODULE_MAKEFILES); do make -C $(dirname x); done
+all: site-lisp/bbdb/Makefile
+	for x in $(SUBMODULE_MAKEFILES); do make -C $$(dirname $$x); done
+
+site-lisp/bbdb/Makefile:
+	cd site-lisp/bbdb; autoconf; ./configure
 
 add-remotes:
 	git remote add cjohansen git://github.com/cjohansen/.emacs.d.git || true
@@ -13,4 +16,4 @@ update-submodules:
 bootstrap: add-remotes update-submodules
 	git fetch --all
 
-.PHONY: all bootstrap
+.PHONY: all add-remotes update-submodules bootstrap
