@@ -121,3 +121,14 @@ Both PATTERN and CONTENTS are matched as regular expressions."
   (interactive)
   (kmacro-push-ring)
   (edit-kbd-macro 'view-lossage))
+
+(defun recompile-emacs-d ()
+  "Byte-Compile all .el files under user-emacs-directory, which
+need updating (.elc doesn't exist or is older than corresponding
+.el)."
+  (interactive)
+  (dolist (file (directory-files user-emacs-directory t "\.el$"))
+    (byte-recompile-file file nil 0))
+
+  (byte-recompile-directory (expand-file-name "users" user-emacs-directory) 0)
+  (byte-recompile-directory (expand-file-name "defuns" user-emacs-directory) 0))
