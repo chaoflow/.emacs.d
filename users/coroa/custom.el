@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(TeX-fold-env-spec-list (quote (("[comment]" ("comment")) ("[figure]" ("figure")))))
  '(TeX-view-program-list (quote (("okular" "okular %o"))))
- '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "okular") (output-pdf "okular") (output-html "xdg-open"))))
+ '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "Okular") (output-pdf "Okular") (output-html "xdg-open"))))
  '(canlock-password "ad40ab084924ec03dd519cc7cd52a90afa028ae8")
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^\\.")
  '(dta-default-cfg "default.conf")

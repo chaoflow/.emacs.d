@@ -209,10 +209,6 @@
    (ditaa . t)
    (latex . t)))
 
-(setq org-src-fontify-natively t
-      org-src-preserve-indentation t
-      org-src-tab-acts-natively t)
-
 
 ;;; org inline tasks
 (require 'org-inlinetask)
