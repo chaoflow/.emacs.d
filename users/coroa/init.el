@@ -206,6 +206,9 @@
             (ibuffer-auto-mode 1)
             (ibuffer-switch-to-saved-filter-groups "default")))
 
+;;; less smooth scrolling
+(setq smooth-scroll-margin 5)
+
 ;;; sprunge
 (defun sprunge (prefix)
   "Posts the current buffer to sprunge, and shows the resulting URL in a new buffer"
