@@ -151,7 +151,7 @@
 
 ;; Diminish modeline clutter
 (require 'diminish)
-;; (diminish 'yas/minor-mode)
+;; (diminish 'yas-minor-mode)
 ;; (diminish 'eldoc-mode)
 ;; (diminish 'paredit-mode)
 
