@@ -35,11 +35,8 @@
 
 
 ;; ido
-(setq ido-use-filename-at-point t)
-
-
-;;; global auto revert
-(global-auto-revert-mode t)
+(setq ido-use-filename-at-point t
+      ido-case-fold t)
 
 
 ;;; blinking cursors suck
