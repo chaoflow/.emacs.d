@@ -1,13 +1,31 @@
-(defvar python-codechecker "flake8"
+(defun use-ipython-locally ()
+  "Use ipython in the local buffer if it is available"
+  (when (executable-find "ipython")
+    (set (make-local-variable 'python-shell-interpreter)
+         (file-name-nondirectory "ipython"))
+    (set (make-local-variable 'python-shell-interpreter-args)
+         "")
+    (set (make-local-variable 'python-shell-prompt-regexp)
+         "In \\[[0-9]+\\]: ")
+    (set (make-local-variable 'python-shell-prompt-output-regexp)
+         "Out\\[[0-9]+\\]: ")
+    (set (make-local-variable 'python-shell-completion-setup-code)
+         "from IPython.core.completerlib import module_completion")
+    (set (make-local-variable 'python-shell-completion-module-string-code)
+         "';'.join(module_completion('''%s'''))\n")
+    (set (make-local-variable 'python-shell-completion-string-code)
+         "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")))
+
+(defvar py-codechecker "flake8"
   "codechecker for flymake in python-mode")
 
 (defun jho/flymake-pycodecheck-find-checker ()
   "Check for a project local python-codechecker. Else assume it is in PATH."
-  (let* ((proj-dir (locate-dominating-file buffer-file-name "nix.env"))
-         (checker (expand-file-name (concat "bin/" python-codechecker) proj-dir)))
+  (let ((checker (expand-file-name (concat "bin/" py-codechecker)
+                                   py-project-directory)))
     (if (file-executable-p checker)
         checker
-      python-codechecker)))
+      py-codechecker)))
 
 (defun dss/flymake-pycodecheck-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
