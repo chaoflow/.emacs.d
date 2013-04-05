@@ -2,6 +2,13 @@
 
 (add-hook 'python-mode-hook 'whitespace-mode)
 
+;;; virtualenv
+
+(autoload 'virtualenv-activate "virtualenv"
+  "Activate a Virtual Environment specified by PATH" t)
+(autoload 'virtualenv-workon "virtualenv"
+  "Activate a Virtual Environment present using virtualenvwrapper" t)
+
 (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
 
 ;;; flymake
