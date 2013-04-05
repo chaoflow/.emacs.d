@@ -58,6 +58,7 @@
    (cons 'magit melpa)
    (cons 'paredit melpa)
    (cons 'flymake-cursor melpa)
+   (cons 'jedi melpa)
 ;;    (cons 'move-text melpa)
 ;;    (cons 'gist melpa)
 ;;    (cons 'htmlize melpa)
