@@ -222,6 +222,19 @@
     (delete-char -1))) ; Newline after URL
 
 
+;;; small helper for pushing due
+
+(defun push-due-to-0x2c ()
+  (interactive)
+  (with-current-buffer
+      (with-current-buffer
+          (find-file-noselect (expand-file-name "~/notes/chaoflow.org"))
+        (let ((org-export-select-tags '("due")))
+          (save-window-excursion
+            (org-ascii-export-as-ascii nil nil nil t))))
+    (write-file "/0x2c.org:due.txt")
+    (kill-buffer)))
+
 ;;; session restart
 (setq desktop-load-locked-desktop t)
 (desktop-save-mode 1)
