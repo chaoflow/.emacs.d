@@ -158,6 +158,9 @@
 ;;; gnus
 (require 'user-gnus)
 
+;;; python
+(setq python-codechecker "flake8-python2")
+
 ;;; ibuffer lift
 (require 'ibuf-ext)
 (setq ibuffer-saved-filter-groups

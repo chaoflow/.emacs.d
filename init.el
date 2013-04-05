@@ -57,6 +57,7 @@
 ;;    (cons 'exec-path-from-shell melpa)
    (cons 'magit melpa)
    (cons 'paredit melpa)
+   (cons 'flymake-cursor melpa)
 ;;    (cons 'move-text melpa)
 ;;    (cons 'gist melpa)
 ;;    (cons 'htmlize melpa)
