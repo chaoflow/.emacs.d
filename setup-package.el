@@ -10,6 +10,15 @@
 (add-to-list 'package-archives marmalade)
 (add-to-list 'package-archives melpa t)
 
+;; Add packages defined elsewhere as builtin packages, so they will
+;; not be pulled in a second time
+(eval-after-load 'finder-inf
+  '(setq package--builtins
+	 (nconc '(
+		  (yasnippet . [(0 8) nil "yasnippet"])
+               ;; (pkgname . [(maj-ver min-ver) nil "description"])
+		  ) package--builtins)))
+
 (package-initialize)
 
 (unless (and (file-exists-p (concat package-user-dir "/archives/marmalade"))
