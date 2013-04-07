@@ -1,8 +1,7 @@
 (require 'python)
 
-(add-hook 'python-mode-hook 'whitespace-mode)
-
 ;;; flymake
+
 (when (require 'flymake nil t)
   (require 'flymake-cursor nil t)
 
@@ -13,9 +12,23 @@
   (define-key python-mode-map (kbd "C-c C-p") 'flymake-goto-prev-error)
 
   (setq flymake-no-changes-timeout 30
-        flymake-start-syntax-check-on-newline t)
+        flymake-start-syntax-check-on-newline nil
+        flymake-gui-warnings-enabled nil
+        py-codechecker "flake8")
+
+  (set-face-attribute 'flymake-errline nil :underline 'unspecified)
+  (set-face-attribute 'flymake-warnline nil :underline 'unspecified)
+
+  (defun turn-on-flymake ()
+    "Activating the flymake minor mode"
+    (flymake-mode 1)
+
+    (when (string-match "flake8" py-codechecker)
+      (set (make-local-variable 'flymake-warning-re) "^W[0-9]")))
 
   (add-hook 'python-mode-hook 'turn-on-flymake))
+
+
 
 ;;; virtualenv
 
@@ -24,26 +37,76 @@
 (autoload 'virtualenv-workon "virtualenv"
   "Activate a Virtual Environment present using virtualenvwrapper" t)
 
-(define-key python-mode-map (kbd "C-m") 'newline-and-indent)
+(defun py-switch-to-virtualenv ()
+  "Switch to the virtualenv in the project root.
 
-(defun setup-py-buffer ()
-  "Check environment, activate available features"
-
-  (set (make-local-variable 'py-project-directory)
-       (locate-dominating-file buffer-file-name "dev.nix"))
-
-  (when py-project-directory
-    (setq py-project-directory
-          (directory-file-name py-project-directory))
-
+Needs to be the first hook to run."
+  (when (py-project-root)
     (make-local-variable 'process-environment)
     (make-local-variable 'exec-path)
     (set (make-local-variable 'virtualenv-name) nil)
-    (virtualenv-activate py-project-directory))
+    (virtualenv-activate (py-project-root))
+    (set (make-local-variable 'python-shell-virtualenv-path)
+         (py-project-root))))
 
-  (use-ipython-locally))
+(add-hook 'python-mode-hook 'py-switch-to-virtualenv)
 
-(add-hook 'python-mode-hook 'setup-py-buffer)
+
+;;; jedi
+;;
+;; C-.             jedi:goto-definition
+;; <C-tab>         jedi:complete
+;; C-c d           jedi:show-doc
+
+(eval-when-compile (require 'jedi))
+(setq jedi:setup-keys t
+      jedi:key-complete (kbd "<M-tab>"))
+(when (require 'jedi nil t)
+  (setq jedi:get-in-function-call-delay 500
+        jedi:tooltip-method nil)
+
+  (defun turn-on-jedi ()
+    (when (py-project-root)
+      (jedi:ac-setup)
+
+      (set (make-local-variable 'jedi:server-command)
+           (list (expand-file-name "bin/python" (py-project-root))
+                 jedi:server-script))
+      (set (make-local-variable 'jedi:server-args)
+           (list "--virtual-env" (py-project-root)))
+
+      (auto-complete-mode t)
+      (jedi-mode t))))
+
+(add-hook 'python-mode-hook 'turn-on-jedi)
+
+;;; ipython
+
+(add-hook 'python-mode-hook 'use-ipython-locally)
+
+;;; whitespace-mode
+
+(add-hook 'python-mode-hook 'whitespace-mode)
+
+
+;;; AutoComplete
+
+(eval-after-load 'auto-complete
+  '(progn
+     ;; `ac-auto-show-menu': Short timeout because the menu is great.
+     (setq ac-auto-show-menu nil
+           ac-use-quick-help nil)
+
+     ;; Fix some key bindings in ac completions. Using RET when a
+     ;; completion is offered is not usually intended to complete (use
+     ;; TAB for that), but done while typing and the inputer is considere
+     ;; complete, with the intent to simply leave it as is and go to the
+     ;; next line. Much like space will not complete, but leave it as is
+     ;; and insert a space.
+     (define-key ac-completing-map (kbd "RET") nil)
+     (define-key ac-completing-map (kbd "<return>") nil)))
+
+
 ;;; pylookup
 
 (eval-when-compile (require 'pylookup))
@@ -60,5 +123,8 @@
 
 (define-key python-mode-map (kbd "C-c h") 'pylookup-lookup)
 
+;;; keybindings
+
+(define-key python-mode-map (kbd "C-m") 'newline-and-indent)
 
 (provide 'setup-python)

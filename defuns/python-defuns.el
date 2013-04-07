@@ -1,3 +1,40 @@
+;;; py-project-root helpers
+
+(defvar py-project-root 'not-initialized
+  "The root of the project the current buffer is in.")
+(make-variable-buffer-local 'py-project-root)
+
+(defun py-project-find-root ()
+  "Find an appropriate project root for the current buffer.
+
+If no root directory is found, nil is returned."
+  (directory-file-name
+   (locate-dominating-file buffer-file-name "dev.nix")))
+
+(defun py-project-root ()
+  "Return the root of the current buffer's project.
+
+You can set the variable `py-project-root' in, for example,
+.dir-locals.el to configure this."
+  (when (eq py-project-root 'not-initialized)
+    ;; Set it to nil so when the user runs C-g on the project root
+    ;; prompt, it's set to "no project root".
+    (setq py-project-root nil)
+    (setq py-project-root
+          ;; (or
+          (py-project-find-root)
+          ;; (read-directory-name "Project root: "
+          ;;                      default-directory))
+          )
+    ;; (when (and (not (file-directory-p py-project-root))
+    ;;            (y-or-n-p "Directory does not exist, create? "))
+    ;;   (make-directory py-project-root t))
+    )
+  py-project-root)
+
+
+;;; ipython
+
 (defun use-ipython-locally ()
   "Use ipython in the local buffer if it is available"
   (when (executable-find "ipython")
@@ -16,16 +53,20 @@
     (set (make-local-variable 'python-shell-completion-string-code)
          "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")))
 
+
+;;; flymake stuff
+
 (defvar py-codechecker "flake8"
   "codechecker for flymake in python-mode")
 
 (defun jho/flymake-pycodecheck-find-checker ()
   "Check for a project local python-codechecker. Else assume it is in PATH."
   (let ((checker (expand-file-name (concat "bin/" py-codechecker)
-                                   py-project-directory)))
+                                   (py-project-root))))
     (if (file-executable-p checker)
         checker
-      py-codechecker)))
+      (when (executable-find py-codechecker)
+        py-codechecker))))
 
 (defun dss/flymake-pycodecheck-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -56,6 +97,3 @@
         (insert "pylint: disable-msg="))
     (insert msgid)))
 
-(defun turn-on-flymake ()
-  "Activating the flymake minor mode"
-  (flymake-mode 1))
