@@ -126,5 +126,6 @@ Needs to be the first hook to run."
 ;;; keybindings
 
 (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
+(define-key python-mode-map (kbd "C-c C-s") 'py-rgrep-symbol)
 
 (provide 'setup-python)

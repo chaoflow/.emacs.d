@@ -97,3 +97,34 @@ You can set the variable `py-project-root' in, for example,
         (insert "pylint: disable-msg="))
     (insert msgid)))
 
+;;;  helper
+
+(defun py-rgrep-symbol (symbol)
+  "Search for SYMBOL in the current project.
+
+SYMBOL defaults to the symbol at point, or the current region if
+active.
+
+With a prefix argument, prompt for a string to search for."
+  (interactive
+   (list
+    (cond
+     (current-prefix-arg
+      (read-from-minibuffer "Search for symbol: "))
+     ((use-region-p)
+      (buffer-substring-no-properties (region-beginning)
+                                      (region-end)))
+     (t
+      (or (thing-at-point 'symbol)
+          (read-from-minibuffer "Search for symbol: "))))))
+  (grep-compute-defaults)
+  (rgrep (format "\\b%s\\b" symbol)
+         "*.py"
+         (py-project-root))
+  (with-current-buffer next-error-last-buffer
+    (let ((inhibit-read-only t))
+      (save-excursion
+        (goto-char (point-min))
+        (when (re-search-forward "^find .*" nil t)
+          (replace-match (format "\\1\nSearching for symbol %s\n"
+                                 symbol)))))))
