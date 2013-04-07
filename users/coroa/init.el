@@ -36,6 +36,7 @@
 
 ;; ido
 (setq ido-use-filename-at-point t
+      ido-default-file-method 'selected-window
       ido-case-fold t)
 
 
