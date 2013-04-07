@@ -44,5 +44,21 @@
   (use-ipython-locally))
 
 (add-hook 'python-mode-hook 'setup-py-buffer)
+;;; pylookup
+
+(eval-when-compile (require 'pylookup))
+(setq pylookup-dir (expand-file-name "pylookup" site-lisp-dir))
+
+(setq pylookup-program (concat pylookup-dir "/pylookup.py")
+      pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+
+;; to speedup, just load it on demand
+(autoload 'pylookup-lookup "pylookup"
+  "Lookup SEARCH-TERM in the Python HTML indexes." t)
+(autoload 'pylookup-update "pylookup"
+  "Run pylookup-update and create the database at `pylookup-db-file'." t)
+
+(define-key python-mode-map (kbd "C-c h") 'pylookup-lookup)
+
 
 (provide 'setup-python)
