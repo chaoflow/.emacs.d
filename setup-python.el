@@ -65,6 +65,10 @@ Needs to be the first hook to run."
   (setq jedi:get-in-function-call-delay 500
         jedi:tooltip-method nil)
 
+  ;; this should not be necessary but for some reason, M-tab is
+  ;; shadowed by completion-at-point's binding to <C-M-i>
+  (define-key python-mode-map (kbd "<M-tab>") 'jedi:complete)
+
   (defun turn-on-jedi ()
     (when (py-project-root)
       (jedi:ac-setup)
