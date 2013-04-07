@@ -77,25 +77,6 @@ You can set the variable `py-project-root' in, for example,
     (list (jho/flymake-pycodecheck-find-checker)
           (list local-file))))
 
-(defun dss/pylint-msgid-at-point ()
-  (interactive)
-  (let (msgid
-        (line-no (line-number-at-pos)))
-    (dolist (elem flymake-err-info msgid)
-      (if (eq (car elem) line-no)
-            (let ((err (car (second elem))))
-              (setq msgid (second (split-string (flymake-ler-text err)))))))))
-
-(defun dss/pylint-silence (msgid)
-  "Add a special pylint comment to silence a particular warning."
-  (interactive (list (read-from-minibuffer "msgid: " (dss/pylint-msgid-at-point))))
-  (save-excursion
-    (comment-dwim nil)
-    (if (looking-at "pylint:")
-        (progn (end-of-line)
-               (insert ","))
-        (insert "pylint: disable-msg="))
-    (insert msgid)))
 
 ;;;  helper
 
