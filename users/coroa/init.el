@@ -112,7 +112,8 @@
    (add-to-list 'TeX-command-list '("LaTeX SE" "%`%l%(mode) -shell-escape %' %t" TeX-run-TeX nil t))
    (setq TeX-save-query nil)))
 
-(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+
+;; (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
 
 
 ;;; ido vertical

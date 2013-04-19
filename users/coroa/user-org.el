@@ -41,7 +41,7 @@
 (setq org-latex-pdf-process '("rubber -d --into %o %f")
       org-latex-remove-logfiles nil)
 
-(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+;; (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 
 (require 'org-special-blocks)
 
