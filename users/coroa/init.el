@@ -231,6 +231,10 @@
   (with-current-buffer
       (with-current-buffer
           (find-file-noselect (expand-file-name "~/notes/chaoflow.org"))
+        (org-block-map (lambda ()
+                         (let ((tags (nth 5 (org-heading-components))))
+                           (when (and (stringp tags) (string-match ":due:" tags)) (org-dblock-update)))))
+
         (let ((org-export-select-tags '("due")))
           (save-window-excursion
             (org-ascii-export-as-ascii nil nil nil t))))
