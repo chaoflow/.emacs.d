@@ -127,6 +127,33 @@ Needs to be the first hook to run."
 
 (define-key python-mode-map (kbd "C-c h") 'pylookup-lookup)
 
+(defun prepare-pylookup-in-nix-environment (src &optional buffer-local)
+  "Select a pylookup database based on the nix hash of the python
+html documentation in SRC. And create it if necessary."
+  (let ((nix-hash (find-corresponding-nix-hash src)))
+    (when nix-hash
+      (set (if buffer-local (make-local-variable 'pylookup-db-file) 'pylookup-db-file)
+           (concat pylookup-dir "/pylookup-" nix-hash ".db"))
+      (unless (file-exists-p pylookup-db-file)
+        (pylookup-update (file-truename src)))
+      pylookup-db-file)))
+
+(eval-after-load 'pylookup
+  '(prepare-pylookup-in-nix-environment
+    (car (or (file-expand-wildcards "~/.nix-profile/share/doc/python*/html")
+             (file-expand-wildcards "/run/current-system/sw/share/doc/python*/html")))))
+
+(defun prepare-pylookup-in-buffer ()
+  "Choose the pylookup database by the current projects nix profile."
+  (when (py-project-root)
+    (prepare-pylookup-in-nix-environment
+     (car (file-expand-wildcards
+           (concat (py-project-root)
+                   "/nixprofile2.?/share/doc/python*/html")))
+     t)))
+
+(add-hook python-mode-hook 'prepare-pylookup-in-buffer)
+
 ;;; keybindings
 
 (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
