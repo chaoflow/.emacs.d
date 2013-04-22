@@ -99,7 +99,7 @@
 
 
 ;;; default browser
-(setq browse-url-generic-program "luakit"
+(setq browse-url-generic-program "conkeror"
       browse-url-browser-function '(("^http:" . browse-url-generic)
                                     ("^https:" . browse-url-generic)
                                     ("^mailto:" . browse-url-mail)
