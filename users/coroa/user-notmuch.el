@@ -51,6 +51,29 @@
 (setq mm-discouraged-alternatives '("text/html" "text/richtext")
       mm-decrypt-option 'known)
 
+;;; decryption
+
+(defun jho/notmuch-show-decrypt-message ()
+  (interactive)
+  ;; make sure the content is not indented, as this confuses epa
+  (when notmuch-show-indent-content
+    (notmuch-show-toggle-thread-indentation))
+
+  (cl-letf ((extent (notmuch-show-message-extent))
+            ((symbol-function 'y-or-n-p) #'(lambda (msg) t)))
+    (epa-decrypt-armor-in-region (car extent) (cdr extent))))
+
+(defun turn-on-notmuch-show-decrypt-region ()
+  (make-local-variable 'epa-mail-mode-map)
+  (define-key epa-mail-mode-map (kbd "C-c C-e d") nil)
+  (define-key epa-mail-mode-map (kbd "C-c C-e C-d") nil)
+
+  (local-set-key (kbd "C-c C-e d") 'jho/notmuch-show-decrypt-message)
+  (local-set-key (kbd "C-c C-e C-d") 'jho/notmuch-show-decrypt-message))
+
+(add-hook 'notmuch-show-hook 'turn-on-notmuch-show-decrypt-region)
+
+
 ;;; extra minor modes
 
 (defun turn-on-orgstruct-mode ()
@@ -137,5 +160,6 @@
       bbdb-pop-up-window-size 10)
 
 (bbdb-initialize 'gnus 'message)
+
 
 (provide 'user-notmuch)
