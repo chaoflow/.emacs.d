@@ -11,23 +11,16 @@
 (setq user-emacs-directory
       (file-name-directory (or load-file-name (buffer-file-name))))
 
+(add-to-list 'load-path user-emacs-directory)
+
 ;; Set path to dependencies
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
-
-;; Set up load path
-(add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path site-lisp-dir)
 
 ;; Settings for currently logged in user
 (setq user-settings-dir
       (concat user-emacs-directory "users/" user-login-name))
 (add-to-list 'load-path user-settings-dir)
-
-;; Add external projects to load path
-(dolist (project (directory-files site-lisp-dir t "\\w+"))
-  (when (file-directory-p project)
-    (add-to-list 'load-path project)))
 
 ;; Write backup files to own directory
 (setq backup-directory-alist
@@ -77,6 +70,14 @@
   (error
    (package-refresh-contents)
    (init--install-packages)))
+
+;; Set up load path
+(add-to-list 'load-path site-lisp-dir)
+
+;; Add external projects to load path
+(dolist (project (directory-files site-lisp-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
 
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
