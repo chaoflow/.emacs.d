@@ -80,9 +80,9 @@ Needs to be the first hook to run."
            (list "--virtual-env" (py-project-root)))
 
       (auto-complete-mode t)
-      (jedi-mode t))))
+      (jedi-mode t)))
 
-(add-hook 'python-mode-hook 'turn-on-jedi)
+  (add-hook 'python-mode-hook 'turn-on-jedi))
 
 ;;; ipython
 
