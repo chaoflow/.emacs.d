@@ -152,7 +152,7 @@ html documentation in SRC. And create it if necessary."
                    "/nixprofile2.?/share/doc/python*/html")))
      t)))
 
-(add-hook python-mode-hook 'prepare-pylookup-in-buffer)
+(add-hook 'python-mode-hook 'prepare-pylookup-in-buffer)
 
 ;;; keybindings
 
