@@ -25,10 +25,8 @@
     (indent-region beg (+ end 11))
     (goto-char (+ beg 4))))
 
-(add-hook 'sgml-mode-hook
-          (lambda ()
-            (require 'rename-sgml-tag)
-            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
+(when (require 'rename-sgml-tag nil t)
+  (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag))
 
 (define-key html-mode-map [remap forward-paragraph] 'skip-to-next-blank-line)
 (define-key html-mode-map [remap backward-paragraph] 'skip-to-previous-blank-line)
