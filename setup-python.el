@@ -114,8 +114,12 @@ html documentation in SRC. And create it if necessary."
 
 ;;; virtualenv
 
-(defadvice compilation-start (around obey-buffer-local-environment-compilation-start activate)
-  ""
+(defadvice compilation-start
+  (around obey-buffer-local-environment-compilation-start activate)
+  "Make compilation-start obey buffer local settings by let
+binding the global symbols to the local values of the process
+environment and the exec path, so that settings of any
+environment variables are respected."
   (if (or (local-variable-p 'process-environment)
           (local-variable-p 'exec-path))
       (cl-letf (((default-value 'process-environment) process-environment)
