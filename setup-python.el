@@ -14,7 +14,8 @@
                           mustmatch initial) nil)))
     ad-do-it))
 
-(defadvice find-elpy-project-root (around prefer-dev-nix-elpy-project-find-root activate)
+(defadvice find-elpy-project-root
+  (around prefer-dev-nix-elpy-project-find-root activate)
   "Look first whether there is a directory, which contains the file dev.nix"
   (or (locate-dominating-file default-directory "dev.nix")
       ad-do-it))
@@ -83,8 +84,10 @@
 html documentation in SRC. And create it if necessary."
   (let ((nix-hash (find-corresponding-nix-hash src)))
     (when nix-hash
-      (set (if buffer-local (make-local-variable 'pylookup-db-file) 'pylookup-db-file)
-           (concat pylookup-dir "/pylookup-" nix-hash ".db"))
+      (setf (if buffer-local
+                (symbol-value (make-local-variable 'pylookup-db-file))
+              (default-value 'pylookup-db-file))
+            (concat pylookup-dir "/pylookup-" nix-hash ".db"))
       (unless (file-exists-p pylookup-db-file)
         (pylookup-update (file-truename src)))
       pylookup-db-file)))
@@ -96,10 +99,10 @@ html documentation in SRC. And create it if necessary."
 
 (defun prepare-pylookup-in-buffer ()
   "Choose the pylookup database by the current projects nix profile."
-  (when (py-project-root)
+  (when (elpy-project-root)
     (prepare-pylookup-in-nix-environment
      (car (file-expand-wildcards
-           (concat (py-project-root)
+           (concat (elpy-project-root)
                    "/nixprofile2.?/share/doc/python*/html")))
      t)))
 
