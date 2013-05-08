@@ -1,7 +1,7 @@
 ;; Buffer-related defuns
 
 (require 'imenu)
-(require 'cl)
+(require 'cl-lib)
 
 (defvar buffer-local-mode nil)
 (make-variable-buffer-local 'buffer-local-mode)

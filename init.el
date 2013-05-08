@@ -51,7 +51,7 @@
    (cons 'magit melpa)
    (cons 'paredit melpa)
    (cons 'flymake-cursor melpa)
-   (cons 'jedi melpa)
+   (cons 'elpy marmalade)
 ;;    (cons 'move-text melpa)
 ;;    (cons 'gist melpa)
 ;;    (cons 'htmlize melpa)

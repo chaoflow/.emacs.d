@@ -1,102 +1,53 @@
 (require 'python)
+(require 'cl-lib)
+
+;;; elpy
+
+(elpy-enable t)
+(add-to-list 'python-mode-hook 'elpy-initialize-local-variables)
+(elpy-use-ipython)
+
+(defadvice elpy-project-root (around silent-elpy-project-root activate)
+  "Don't ask for a project-root. If it's not there, it's not there."
+  (cl-letf (((symbol-function 'read-directory-name)
+             #'(lambda (prompt &optional dir default-dirname
+                          mustmatch initial) nil)))
+    ad-do-it))
+
+(defadvice find-elpy-project-root (around prefer-dev-nix-elpy-project-find-root activate)
+  "Look first whether there is a directory, which contains the file dev.nix"
+  (or (locate-dominating-file default-directory "dev.nix")
+      ad-do-it))
+
 
 ;;; flymake
 
-(when (require 'flymake nil t)
-  (require 'flymake-cursor nil t)
+(eval-after-load 'flymake
+  '(progn
+     (require 'flymake-cursor nil t)
 
-  (add-to-list 'flymake-allowed-file-name-masks
-               (list "\\.py\\'" 'dss/flymake-pycodecheck-init))
+     (setq flymake-no-changes-timeout 30
+           flymake-start-syntax-check-on-newline nil
+           flymake-gui-warnings-enabled nil
+           python-check-command "flake8")
 
-  (define-key python-mode-map (kbd "C-c C-n") 'flymake-goto-next-error)
-  (define-key python-mode-map (kbd "C-c C-p") 'flymake-goto-prev-error)
+     (set-face-attribute 'flymake-errline nil :underline 'unspecified)
+     (set-face-attribute 'flymake-warnline nil :underline 'unspecified)))
 
-  (setq flymake-no-changes-timeout 30
-        flymake-start-syntax-check-on-newline nil
-        flymake-gui-warnings-enabled nil
-        py-codechecker "flake8")
-
-  (set-face-attribute 'flymake-errline nil :underline 'unspecified)
-  (set-face-attribute 'flymake-warnline nil :underline 'unspecified)
-
-  (defun turn-on-flymake ()
-    "Activating the flymake minor mode"
-    (flymake-mode 1)
-
-    (when (string-match "flake8" py-codechecker)
-      (set (make-local-variable 'flymake-warning-re) "^W[0-9]")))
-
-  (add-hook 'python-mode-hook 'turn-on-flymake))
-
-
-
-;;; virtualenv
-
-(autoload 'virtualenv-activate "virtualenv"
-  "Activate a Virtual Environment specified by PATH" t)
-(autoload 'virtualenv-workon "virtualenv"
-  "Activate a Virtual Environment present using virtualenvwrapper" t)
-
-(defun py-switch-to-virtualenv ()
-  "Switch to the virtualenv in the project root.
-
-Needs to be the first hook to run."
-  (when (py-project-root)
-    (make-local-variable 'process-environment)
-    (make-local-variable 'exec-path)
-    (set (make-local-variable 'virtualenv-name) nil)
-    (virtualenv-activate (py-project-root))
-    (set (make-local-variable 'python-shell-virtualenv-path)
-         (py-project-root))))
-
-(add-hook 'python-mode-hook 'py-switch-to-virtualenv)
-
-
-;;; jedi
-;;
-;; C-.             jedi:goto-definition
-;; <C-tab>         jedi:complete
-;; C-c d           jedi:show-doc
-
-(eval-when-compile (require 'jedi))
-(setq jedi:setup-keys t
-      jedi:key-complete (kbd "<M-tab>"))
-(when (require 'jedi nil t)
-  (setq jedi:get-in-function-call-delay 500
-        jedi:tooltip-method nil)
-
-  ;; this should not be necessary but for some reason, M-tab is
-  ;; shadowed by completion-at-point's binding to <C-M-i>
-  (define-key python-mode-map (kbd "<M-tab>") 'jedi:complete)
-
-  (defun turn-on-jedi ()
-    (when (py-project-root)
-      (jedi:ac-setup)
-
-      (set (make-local-variable 'jedi:server-command)
-           (list (expand-file-name "bin/python" (py-project-root))
-                 jedi:server-script))
-      (set (make-local-variable 'jedi:server-args)
-           (list "--virtual-env" (py-project-root)))
-
-      (auto-complete-mode t)
-      (jedi-mode t)))
-
-  (add-hook 'python-mode-hook 'turn-on-jedi))
-
-;;; ipython
-
-(add-hook 'python-mode-hook 'use-ipython-locally)
 
 ;;; whitespace-mode
 
-(add-hook 'python-mode-hook 'whitespace-mode)
+;;; deactivate highlight-indentation-mode
+(cl-callf2 delq 'highlight-indentation-mode elpy-default-minor-modes)
+(add-to-list 'elpy-default-minor-modes 'whitespace-mode)
 
 
 ;;; AutoComplete
 
 (eval-after-load 'auto-complete
   '(progn
+     (ac-set-trigger-key "<M-tab>")
+
      ;; `ac-auto-show-menu': Short timeout because the menu is great.
      (setq ac-auto-show-menu nil
            ac-use-quick-help nil)
@@ -125,7 +76,7 @@ Needs to be the first hook to run."
 (autoload 'pylookup-update "pylookup"
   "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
-(define-key python-mode-map (kbd "C-c h") 'pylookup-lookup)
+(define-key python-mode-map (kbd "C-c C-h") 'pylookup-lookup)
 
 (defun prepare-pylookup-in-nix-environment (src &optional buffer-local)
   "Select a pylookup database based on the nix hash of the python
@@ -157,6 +108,33 @@ html documentation in SRC. And create it if necessary."
 ;;; keybindings
 
 (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
-(define-key python-mode-map (kbd "C-c C-s") 'py-rgrep-symbol)
+
+;;; virtualenv
+
+(defadvice compilation-start (around obey-buffer-local-environment-compilation-start activate)
+  ""
+  (if (or (local-variable-p 'process-environment)
+          (local-variable-p 'exec-path))
+      (cl-letf (((default-value 'process-environment) process-environment)
+                ((default-value 'exec-path) exec-path))
+        ad-do-it)
+    ad-do-it))
+
+(defun py-switch-to-virtualenv ()
+  "Switch to the virtualenv in the project root.
+
+Needs to be the first hook to run."
+  (when (elpy-project-root)
+    (set (make-local-variable 'virtualenv-name) nil)
+    (set (make-local-variable 'process-environment)
+         (copy-sequence process-environment))
+    (make-local-variable 'exec-path)
+    (virtualenv-activate (directory-file-name (elpy-project-root)))
+    (set (make-local-variable 'python-shell-virtualenv-path)
+         (directory-file-name (elpy-project-root)))))
+
+;; should be the last element to add to python-mode-hook, so it runs FIRST
+(add-hook 'python-mode-hook 'py-switch-to-virtualenv)
+
 
 (provide 'setup-python)
