@@ -32,8 +32,8 @@
            flymake-gui-warnings-enabled nil
            python-check-command "flake8")
 
-     (set-face-attribute 'flymake-errline nil :underline 'unspecified)
-     (set-face-attribute 'flymake-warnline nil :underline 'unspecified)))
+     (set-face-attribute 'flymake-errline nil :inherit nil)
+     (set-face-attribute 'flymake-warnline nil :inherit nil)))
 
 
 ;;; whitespace-mode
