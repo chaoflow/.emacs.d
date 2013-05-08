@@ -12,7 +12,9 @@
   (cl-letf (((symbol-function 'read-directory-name)
              #'(lambda (prompt &optional dir default-dirname
                           mustmatch initial) nil)))
-    ad-do-it))
+    (condition-case err
+        ad-do-it
+      (wrong-type-argument nil))))
 
 (defadvice find-elpy-project-root
   (around prefer-dev-nix-elpy-project-find-root activate)
