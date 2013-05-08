@@ -170,4 +170,13 @@
   (local-set-key (kbd "M-e") 'next-line)) ; was c-end-of-statement
 (add-hook 'c-mode-hook 'c-mode-fix-kbd)
 
+(eval-after-load 'elpy
+  '(progn
+     (define-key elpy-mode-map (kbd "M-e") nil)
+     (define-key elpy-mode-map (kbd "M-n") nil)
+     (define-key elpy-mode-map (kbd "M-p") nil)
+     (define-key elpy-mode-map (kbd "M-h") 'elpy-nav-forward-statement)
+     (define-key elpy-mode-map (kbd "M-H") 'elpy-nav-backward-statement)
+     (define-key elpy-mode-map (kbd "M-Y") 'elpy-forward-definition)
+     (define-key elpy-mode-map (kbd "M-L") 'elpy-backward-definition)))
 (provide 'ergonomic-keybindings)
