@@ -49,4 +49,14 @@
 (define-key html-mode-map (kbd "s-k") 'tagedit-kill-attribute)
 (define-key html-mode-map (kbd "s-<return>") 'tagedit-toggle-multiline-tag)
 
+;;; indentation
+(defun setup-tabbased-indentation ()
+  (make-local-variable 'c-basic-offset)
+
+  (setq indent-tabs-mode t
+        c-basic-offset 2
+        tab-width 2))
+
+(add-hook 'sgml-mode-hook 'setup-tabbased-indentation)
+
 (provide 'setup-html-mode)
