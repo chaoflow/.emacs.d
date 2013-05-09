@@ -51,7 +51,6 @@
   '(progn
      (ac-set-trigger-key "<M-tab>")
 
-     ;; `ac-auto-show-menu': Short timeout because the menu is great.
      (setq ac-auto-show-menu nil
            ac-use-quick-help nil)
 
