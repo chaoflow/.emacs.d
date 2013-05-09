@@ -1,0 +1,5 @@
+* wishlist
+** address book
+*** what possibilities are there?
+*** It feels just an org file could do it
+**** grep the org file for email addresses and use these for notmuch
