@@ -49,3 +49,6 @@
 [submodule "site-lisp/pylookup"]
 	path = site-lisp/pylookup
 	url = http://github.com/tsgates/pylookup.git
+[submodule "site-lisp/calfw"]
+	path = site-lisp/calfw
+	url = git://github.com/kiwanami/emacs-calfw.git
