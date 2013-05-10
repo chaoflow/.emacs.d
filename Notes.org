@@ -1,3 +1,5 @@
+#+SEQ_TODO: TODO | DONE
+
 * wishlist/status
 ** python
 based on elpy, needs testing
@@ -14,11 +16,63 @@ based on elpy, needs testing
   eval-buffer(#<buffer  *load*-682636> nil "/home/cfl/.emacs.d/users/cfl/init.el" nil t)  ; Reading at buffer position 2711
 ** speedup calfw/org calendars
 ** html
-*** all tabs
-*** tab is displayed as two spaces
+*** DONE all tabs
+*** DONE tab is displayed as two spaces
 *** TODO opening tag in single line
 *** TODO wrap lines and align with first attribute of starting line
+*** demonstration
+#+begin_src html
+  <ul>
+    <li>short list item</li>
+    <li>long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long list item</li>
+  </ul>
+  <div>
+    <p class="class1 class2 class3 class4 class5 class6 class7" name="name2">Some text</p>
+  
+    <p><span style="text-size: huge">Text</span></p>
+  </div>
+#+end_src
+
+to be shown (but not saved ??) as
+
+#+begin_src html
+  <ul>
+    <li>
+      short list item
+    </li>
+    <li>
+      long long long long long long long long long long long long
+      long long long long long long long long long long long long
+      long long long long long long long long long long long long
+      long long long long list item
+    </li>
+  </ul>
+  <div>
+    <p class="class1 class2 class3 class4 class5 class6 class7"
+       name="name1">
+      Some text
+    </p>
+  
+    <p>
+      <span style="text-size: huge">
+        Text
+      </span>
+    </p>
+  </div>
+#+end_src
+
+
 ** address book
 *** what possibilities are there?
+**** org-contacts
+http://julien.danjou.info/projects/emacs-packages#org-contacts
+- contacts as headlines with properties
+- integration into message mode
+- new contacts through captures
+**** BBDBv3
+http://savannah.nongnu.org/projects/bbdb/
+- integration into message mode
+- fast searching and editing through dedicated keybindings
+- new contacts through dialog.
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
