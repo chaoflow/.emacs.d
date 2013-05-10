@@ -1,6 +1,5 @@
-(require 'org)
-
 (add-to-list 'load-path (concat site-lisp-dir "/org-mode/lisp"))
+(require 'org)
 
 (defun myorg-update-parent-cookie ()
   (when (equal major-mode 'org-mode)
