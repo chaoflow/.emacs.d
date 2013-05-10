@@ -16,11 +16,13 @@
         ad-do-it
       (wrong-type-argument nil))))
 
-(defadvice find-elpy-project-root
+(defadvice elpy-project-find-root
   (around prefer-dev-nix-elpy-project-find-root activate)
   "Look first whether there is a directory, which contains the file dev.nix"
-  (or (locate-dominating-file default-directory "dev.nix")
-      ad-do-it))
+  (let ((devnixroot (locate-dominating-file default-directory "dev.nix")))
+    (if devnixroot
+        (setq ad-return-value devnixroot)
+      ad-do-it)))
 
 
 ;;; flymake
