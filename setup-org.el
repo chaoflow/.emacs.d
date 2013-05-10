@@ -1,3 +1,4 @@
+(require 'org)
 
 (add-to-list 'load-path (concat site-lisp-dir "/org-mode/lisp"))
 
