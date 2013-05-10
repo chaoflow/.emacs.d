@@ -10,5 +10,15 @@ base on elpy, needs testing
 *** TODO wrap lines and align with first attribute of starting line
 ** address book
 *** what possibilities are there?
+**** org-contacts
+http://julien.danjou.info/projects/emacs-packages#org-contacts
+- contacts as headlines with properties
+- integration into message mode
+- new contacts through captures
+**** BBDBv3
+http://savannah.nongnu.org/projects/bbdb/
+- integration into message mode
+- fast searching and editing through dedicated keybindings
+- new contacts through dialog.
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
