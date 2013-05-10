@@ -19,16 +19,21 @@
 (global-set-key (kbd "C-x C-m") 'smex)
 
 ;; Expand region (increases selected region by semantic units)
-(global-set-key (if is-mac (kbd "C-@") (kbd "C-'")) 'er/expand-region)
+;; (global-set-key (if is-mac (kbd "C-@") (kbd "C-'")) 'er/expand-region)
 
-;; ;; Experimental multiple-cursors
-;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-;; (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
-;; (global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
 ;; iedit-mode for simultaneous editing of multiple occurences of one symbol
 (global-set-key (kbd "C-;") 'iedit-mode)
 
-;; ;; Mark additional regions matching current region
+;; ;; Experimental multiple-cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
+;; Mark additional regions matching current region
+(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+
+;; Mark additional regions matching current region (proposed bindings)
 ;; (global-set-key (kbd "M-æ") 'mc/mark-all-like-this-dwim)
 ;; (global-set-key (kbd "C-å") 'mc/mark-previous-like-this)
 ;; (global-set-key (kbd "C-æ") 'mc/mark-next-like-this)
