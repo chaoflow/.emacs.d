@@ -13,11 +13,7 @@
 
 
 ;; org
-
-;; include the contrib code for org-notmuch
-(add-to-list 'load-path "/var/run/current-system/sw/share/org/contrib/lisp" )
-;; (add-to-list 'load-path (concat site-lisp-dir "/org-mode/contrib/lisp"))
-(require 'org)
+(add-to-list 'load-path (concat site-lisp-dir "/org-mode/contrib/lisp"))
 (require 'org-notmuch)
 
 (global-set-key "\C-cl" 'org-store-link)
@@ -78,7 +74,7 @@
 ;;  )
 
 ;; see https://github.com/kiwanami/emacs-calfw#readme
-(require 'calfw-org)
+;;(require 'calfw-org)
 ;; First day of the week
 (setq calendar-week-start-day 1) ; 0:Sunday, 1:Monday
 (setq cfw:render-line-breaker 'cfw:render-line-breaker-wordwrap)

@@ -1,6 +1,18 @@
 * wishlist/status
 ** python
-base on elpy, needs testing
+based on elpy, needs testing
+** calendar year view
+*** not sure how to achieve this sanely
+*** switching between months in calfw takes ages for me
+*** issues
+**** TODO Debugger entered--Lisp error: (void-function org-defvaralias)
+  org-defvaralias(org-agenda-filter-preset org-agenda-tag-filter-preset)
+
+  eval-buffer(#<buffer  *load*-351332> nil "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)  ; Reading at buffer position 1104
+  load-with-code-conversion("/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)
+  require(calfw-org)
+  eval-buffer(#<buffer  *load*-682636> nil "/home/cfl/.emacs.d/users/cfl/init.el" nil t)  ; Reading at buffer position 2711
+** speedup calfw/org calendars
 ** html
 *** all tabs
 *** tab is displayed as two spaces
