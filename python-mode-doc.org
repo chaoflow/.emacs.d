@@ -1,0 +1,118 @@
+* python mode documentation
+So ... the python mode is complete, at least to my taste. After all, I
+based it on the ready-made elpy (Emacs Lisp Python Enviroment)[fn:1],
+because it is still actively developed, brings many useful helpers
+and supports jedi as well as rope.
+
+** installation
+i pushed the latest modifications to setup-python.el and init.el to a
+new branch named elpy on github.com/chaoflow/.emacs.d.git . check it
+out and restart emacs with the new config. it will fetch quite some
+packages from elpa[fn:2]. then you are more or less ready to go.
+
+** usage
+*** projects
+whenever a python file is opened (or reverted), a project root is
+guessed by scanning the directory tree upwards for a dev.nix file or
+dvcs directories like .git. this project root is assumed to be a
+virtualenv directory and root/bin is added to PATH.
+
+|--------------+---------------------------------------|
+| C-c C-f      | finds a file within the project root  |
+| M-x speedbar | browseable directory listing          |
+| C-c C-s      | search symbol at point within project |
+| C-u C-c C-s  | search only for definitions def/class |
+|--------------+---------------------------------------|
+
+*** completion
+if the virtualenv provides the elpy and (jedi or rope) python
+packages[fn:3], elpy will offer possible completions during typing,
+which can be activated using TAB. A drop-down menu showing all
+completions can be triggered[fn:4] by M-TAB.
+
+*** snippets
+TAB also triggers a snippet lookup. snippets are controlled by tiny
+files which lie in .emacs.d/snippets/<mode>/<snippetname>. for now you
+can just try to enter ipdb TAB, which expands to "import ipdb;
+ipdb.set_trace()"[fn:5]
+
+*** navigation
+|-------------+------------------------------------------------------------|
+| M-n and M-p | jump to the next and previous definition (class/def)       |
+| C-x C-i     | show an ido-prompt with the buffer's definitions           |
+| C-c C-o     | open a new buffer with all definitions[fn:6]                     |
+| M-.         | jump to the definition of symbol at point (cross-file)     |
+|-------------+------------------------------------------------------------|
+
+*** documentation
+|-------------+-------------------------------------------------|
+| C-c C-d     | doc on the symbol at point                      |
+| C-u C-c C-d | pydoc on the symbol at point                    |
+| C-c C-w     | websearch on doc.python.org for symbol          |
+| C-c C-h     | lookup symbol at point in local html docs[fn:7] |
+|-------------+-------------------------------------------------|
+
+All but C-c C-h needs elpy available.
+
+*** interactive shell
+|---------+--------------------------------------------------|
+| C-c C-z | start up or just bring up an ipython shell       |
+| C-c C-c | send the current buffer (or region) to the shell |
+| C-M-x   | send the current defun to the shell              |
+|---------+--------------------------------------------------|
+
+*** checks and tests
+if flake8 is in PATH, it is automatically run on the python file,
+whenever you save. offending lines are marked by a red exclamation
+mark in the fringe on the left side. you can navigate between them
+using C-c C-n and C-c C-p.
+
+|---------+------------------------------------------------------|
+| C-c C-v | run flake8 and show results in separate buffer[fn:6] |
+| C-c C-t | run nosetests (if nose is in PATH)                   |
+|---------+------------------------------------------------------|
+
+*** refactoring
+i haven't tried it myself, but if rope is available, then C-c C-r
+brings up a dialog that lets you select a refactoring action. the
+shown options are context sensitive.
+
+**** simultaneous editing with iedit-mode
+is not python specific. upon activation with C-;, this mode will
+select all occurrences of the active region or symbol at point in the
+current buffer. Then, editing any of those will edit all others as
+well. C-; leaves the mode again. C-' toggles hiding of lines without
+any matches.
+
+combine that with narrowing to operate only on a part of the
+buffer. C-x n n narrows to active region. C-x n w widens again.
+C-x n d narrows to current function.
+
+
+* Footnotes
+
+[fn:1] https://github.com/jorgenschaefer/elpy
+
+[fn:2] elpy unfortunately depends on a few packages. if it complains
+that something didn't work, try to start emacs a second time.
+
+[fn:3] under nix they can be found at python-rope, python-jedi and
+python-elpy, where the latter has not been merged into the upstream
+nixpkgs, yet.
+
+[fn:4] the completions could also spring up after a short delay on
+their own and even show the doc strings simultaneously. but i liked
+the interface to be as unintrusive as possible. refer to the
+variables ac-auto-show-menu and ac-use-quick-help respectively.
+
+[fn:5] i've got further snippets for class, def, while and getter/setter
+definitions.
+
+[fn:6] navigate within the extra buffer using M-g M-n and M-g M-p
+
+[fn:7] scans for first hit of expansions of
+<projectroot>/nixprofile2.?/share/doc/python*/html or
+~/.nix-profile/share/doc/python*/html or
+/run/current-system/sw/share/doc/python*/html
+
+
