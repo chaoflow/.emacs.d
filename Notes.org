@@ -2,18 +2,24 @@
 
 * wishlist/status
 ** python
-based on elpy, needs testing
+   based on elpy, needs testing
+** org-mode
+*** TODO It looks like indentation of normal text is off
+
+This is shown at the very beginning of the line, I'm pretty sure it
+used to be shown indented.
+
 ** calendar year view
 *** not sure how to achieve this sanely
 *** switching between months in calfw takes ages for me
 *** issues
 **** DONE Debugger entered--Lisp error: (void-function org-defvaralias)
-  org-defvaralias(org-agenda-filter-preset org-agenda-tag-filter-preset)
+     org-defvaralias(org-agenda-filter-preset org-agenda-tag-filter-preset)
 
-  eval-buffer(#<buffer  *load*-351332> nil "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)  ; Reading at buffer position 1104
-  load-with-code-conversion("/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)
-  require(calfw-org)
-  eval-buffer(#<buffer  *load*-682636> nil "/home/cfl/.emacs.d/users/cfl/init.el" nil t)  ; Reading at buffer position 2711
+     eval-buffer(#<buffer  *load*-351332> nil "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)  ; Reading at buffer position 1104
+     load-with-code-conversion("/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)
+     require(calfw-org)
+     eval-buffer(#<buffer  *load*-682636> nil "/home/cfl/.emacs.d/users/cfl/init.el" nil t)  ; Reading at buffer position 2711
 ** speedup calfw/org calendars
 ** html
 *** DONE all tabs
@@ -76,3 +82,9 @@ http://savannah.nongnu.org/projects/bbdb/
 - new contacts through dialog.
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
+** Issues
+**** find: `elpa/ecukes-*/ecukes': No such file or directory
+     make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
+     carton exec  features
+     make[1]: carton: Command not found
+     make[1]: *** [all] Error 127
