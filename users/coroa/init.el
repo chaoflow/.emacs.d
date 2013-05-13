@@ -67,7 +67,9 @@
 
 ;;; whitespace
 (require 'whitespace)
-(setq whitespace-style '(face indentation::space trailing))
+(setq whitespace-style '(face trailing))
+
+;; (setq whitespace-style '(face indentation::space trailing))
 
 (defun turn-on-whitespace ()
   (whitespace-mode t))
