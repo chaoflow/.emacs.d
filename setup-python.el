@@ -35,10 +35,10 @@
   "Don't ask for a project-root. If it's not there, it's not there."
   (cl-letf (((symbol-function 'read-directory-name)
              #'(lambda (prompt &optional dir default-dirname
-                          mustmatch initial) nil)))
+                          mustmatch initial) (signal 'quit nil))))
     (condition-case err
         ad-do-it
-      (wrong-type-argument nil))))
+      (quit nil))))
 
 (defadvice elpy-project-find-root
   (around prefer-dev-nix-elpy-project-find-root activate)
