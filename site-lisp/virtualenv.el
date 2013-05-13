@@ -42,6 +42,9 @@
 
 ;; M-x virtualenv-deactivate
 
+(defvar virtualenv-workon-session nil
+  "UNUSED. Available for compatibility to elpa's virtualenv.el.")
+
 
 (unless (setq virtualenv-workon-home (getenv "WORKON_HOME"))
   (setq virtualenv-workon-home "~/.virtualenvs")
