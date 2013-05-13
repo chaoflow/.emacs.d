@@ -7,6 +7,30 @@
 (add-to-list 'python-mode-hook 'elpy-initialize-local-variables)
 (elpy-use-ipython)
 
+;; make elpy fail gracefully and show a warning, when a necessary
+;; module is missing
+
+(defalias 'elpy-installation-instructions
+  #'(lambda (message &optional show-elpy-module)
+      (display-warning 'elpy message :warning)))
+
+(defvar elpy-rpc-inhibit nil
+  "If it is t, the function elpy-rpc will always just return nil")
+(make-variable-buffer-local 'elpy-rpc-inhibit)
+
+(defadvice elpy-rpc (around inhibitable activate)
+  "Check if inhibited by elpy-rpc-inhibit"
+  (unless elpy-rpc-inhibit
+    ad-do-it))
+
+(defadvice elpy-rpc-open (around fail-gracefully activate)
+  (condition-case err
+      ad-do-it
+    (error
+     (setq elpy-rpc-inhibit t)
+     (error (concat (cadr err) "; inhibiting further rpc tries.")))))
+
+
 (defadvice elpy-project-root (around silent-elpy-project-root activate)
   "Don't ask for a project-root. If it's not there, it's not there."
   (cl-letf (((symbol-function 'read-directory-name)
