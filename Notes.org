@@ -3,7 +3,10 @@
 * wishlist/status
 ** python
 based on elpy, needs testing
-*** TODO eldoc error: (void-variable virtualenv-workon-session)
+*** DONE eldoc error: (void-variable virtualenv-workon-session)
+CLOSED: [2013-05-14 Tue 00:38]
+
+fixed by 7a5b471.
 ** org-mode
 *** DONE It looks like indentation of normal text is off
 CLOSED: [2013-05-11 Sat 13:11]
@@ -91,4 +94,9 @@ make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
 carton exec  features
 make[1]: carton: Command not found
 make[1]: *** [all] Error 127
+
+**** elpa/ecukes should not be installed by elpa
+try removing the directory alltogether. one can always remove
+everything in there freely. it will always be pulled back in at the
+next start of emacs.
 *** during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
