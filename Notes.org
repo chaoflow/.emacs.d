@@ -1,12 +1,11 @@
-#+SEQ_TODO: TODO | DONE
+#+SEQ_TODO: TODO CHECK | DONE
 
 * wishlist/status
 ** python
 based on elpy, needs testing
-*** DONE eldoc error: (void-variable virtualenv-workon-session)
-CLOSED: [2013-05-14 Tue 00:38]
+*** TEST eldoc error: (void-variable virtualenv-workon-session)
 
-fixed by 7a5b471.
+hopefully fixed by 7a5b471.
 ** org-mode
 *** DONE It looks like indentation of normal text is off
 CLOSED: [2013-05-11 Sat 13:11]
@@ -89,7 +88,7 @@ http://savannah.nongnu.org/projects/bbdb/
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
 ** Issues
-*** find: `elpa/ecukes-*/ecukes': No such file or directory
+*** TEST find: `elpa/ecukes-*/ecukes': No such file or directory
 make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
 carton exec  features
 make[1]: carton: Command not found
@@ -99,4 +98,7 @@ make[1]: *** [all] Error 127
 try removing the directory alltogether. one can always remove
 everything in there freely. it will always be pulled back in at the
 next start of emacs.
-*** during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
+*** TEST during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
+this was probably due to calling on unavailable mode in html-mode-hook
+(cfl). commented out.
+
