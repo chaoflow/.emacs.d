@@ -91,4 +91,4 @@ make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
 carton exec  features
 make[1]: carton: Command not found
 make[1]: *** [all] Error 127
-*** during org export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
+*** during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
