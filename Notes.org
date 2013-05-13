@@ -2,13 +2,16 @@
 
 * wishlist/status
 ** python
-   based on elpy, needs testing
+based on elpy, needs testing
+*** TODO eldoc error: (void-variable virtualenv-workon-session)
 ** org-mode
-*** TODO It looks like indentation of normal text is off
+*** DONE It looks like indentation of normal text is off
+CLOSED: [2013-05-11 Sat 13:11]
 
 This is shown at the very beginning of the line, I'm pretty sure it
 used to be shown indented.
 
+Indentation works again. Not sure why.
 ** calendar year view
 *** not sure how to achieve this sanely
 *** switching between months in calfw takes ages for me
@@ -83,8 +86,9 @@ http://savannah.nongnu.org/projects/bbdb/
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
 ** Issues
-**** find: `elpa/ecukes-*/ecukes': No such file or directory
-     make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
-     carton exec  features
-     make[1]: carton: Command not found
-     make[1]: *** [all] Error 127
+*** find: `elpa/ecukes-*/ecukes': No such file or directory
+make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
+carton exec  features
+make[1]: carton: Command not found
+make[1]: *** [all] Error 127
+*** during org export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
