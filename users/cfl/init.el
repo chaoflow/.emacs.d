@@ -96,10 +96,9 @@
 
 
 (defun my-html-mode-hook ()
-  (setq tab-width 2)
-  (setq indent-tabs-mode t)
-  (setq whitespace-style (quote (face trailing empty indentation))))
-(add-hook 'html-mode-hook 'adaptive-wrap-prefix-mode)
+  (setq-local whitespace-style (quote (face trailing empty indentation))))
+
+;(add-hook 'html-mode-hook 'adaptive-wrap-prefix-mode)
 ;(add-hook 'html-mode-hook 'org-indent-mode)
 (add-hook 'html-mode-hook 'whitespace-mode)
 (add-hook 'html-mode-hook 'my-html-mode-hook)
