@@ -12,7 +12,9 @@
 
 (defalias 'elpy-installation-instructions
   #'(lambda (message &optional show-elpy-module)
-      (display-warning 'elpy message :warning)))
+      (message message)
+      (ding)
+      (sit-for 1)))
 
 (defvar elpy-rpc-inhibit nil
   "If it is t, the function elpy-rpc will always just return nil")
