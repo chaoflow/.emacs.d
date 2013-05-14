@@ -17,15 +17,16 @@
       (sit-for 1)))
 
 (defvar elpy-rpc-inhibit nil
-  "If it is t, the function elpy-rpc will always just return nil")
+  "If set the function elpy-rpc will always just return nil")
 (make-variable-buffer-local 'elpy-rpc-inhibit)
 
 (defadvice elpy-rpc (around inhibitable activate)
-  "Check if inhibited by elpy-rpc-inhibit"
+  "Only execute if not inhibited by elpy-rpc-inhibit"
   (unless elpy-rpc-inhibit
     ad-do-it))
 
 (defadvice elpy-rpc-open (around fail-gracefully activate)
+  "If the rpc connection fails to open inhibit further tries."
   (condition-case err
       ad-do-it
     (error
