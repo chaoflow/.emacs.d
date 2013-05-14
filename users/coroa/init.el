@@ -41,7 +41,7 @@
 
 
 ;;; blinking cursors suck
-(blink-cursor-mode nil)
+(blink-cursor-mode 0)
 
 
 ;;; coding hook

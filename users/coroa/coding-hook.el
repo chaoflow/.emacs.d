@@ -6,7 +6,7 @@
   (run-hooks 'coding-hook))
 
 (eval-after-load 'c-mode '(add-hook 'c-mode-hook 'run-coding-hook))
-(eval-after-load 'python-mode '(add-hook 'python-mode-hook 'run-coding-hook))
+(eval-after-load 'python '(add-hook 'python-mode-hook 'run-coding-hook))
 (eval-after-load 'lisp-mode
   '(progn
      (add-hook 'lisp-mode-hook 'run-coding-hook)
