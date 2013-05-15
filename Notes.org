@@ -80,6 +80,8 @@ http://julien.danjou.info/projects/emacs-packages#org-contacts
 - contacts as headlines with properties
 - integration into message mode
 - new contacts through captures
+
+@coroa: how would/could that be used for notmuch address completion?
 **** BBDBv3
 http://savannah.nongnu.org/projects/bbdb/
 - integration into message mode
@@ -88,7 +90,7 @@ http://savannah.nongnu.org/projects/bbdb/
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
 ** Issues
-*** TEST find: `elpa/ecukes-*/ecukes': No such file or directory
+*** CHECK find: `elpa/ecukes-*/ecukes': No such file or directory
 make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
 carton exec  features
 make[1]: carton: Command not found
@@ -98,7 +100,15 @@ make[1]: *** [all] Error 127
 try removing the directory alltogether. one can always remove
 everything in there freely. it will always be pulled back in at the
 next start of emacs.
-*** TEST during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
+
+@coroa: I don'd have elpa/cukes*, the error message is shown in the
+first lines of make output
+
+*** DONE during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
+CLOSED: [2013-05-15 Wed 17:32]
 this was probably due to calling on unavailable mode in html-mode-hook
 (cfl). commented out.
 
+*** TODO magit-status destroys window layout. should be in current window?
+*** TODO paste at point of cursor instead of mouse pointer
+middle mouse click
