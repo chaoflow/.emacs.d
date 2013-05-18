@@ -128,5 +128,11 @@ this was probably due to calling on unavailable mode in html-mode-hook
 (cfl). commented out.
 
 *** TODO magit-status destroys window layout. should be in current window?
-*** TODO paste at point of cursor instead of mouse pointer
+*** CHECK paste at point of cursor instead of mouse pointer
 middle mouse click
+
+C-h k Middle-mouse-click tells me that the function run on middle
+mouse click is mouse-yank-primary, which inserts at point if the
+variable mouse-yank-at-point is non-nil.
+
+added to chaoflows config.

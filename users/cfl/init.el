@@ -107,5 +107,7 @@
 
 (setq ac-auto-start nil)
 
+;;; paste at point instead of under mouse pointer
+(setq mouse-yank-at-point t)
 
 (require 'znc)
