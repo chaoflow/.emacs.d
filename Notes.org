@@ -114,7 +114,7 @@ carton exec  features
 make[1]: carton: Command not found
 make[1]: *** [all] Error 127
 
-**** elpa/ecukes should not be installed by elpa
+**** CHECK elpa/ecukes should not be installed by elpa
 try removing the directory alltogether. one can always remove
 everything in there freely. it will always be pulled back in at the
 next start of emacs.
@@ -122,6 +122,17 @@ next start of emacs.
 @coroa: I don'd have elpa/cukes*, the error message is shown in the
 first lines of make output
 
+carton is a command line manager for elpa
+
+ecukes is a unit/regression testing tool for emacs
+
+all the makefile basically would do is getting all dependencies from
+elpa and then run some unit tests against the code, if carton was
+installed.
+
+i would propose to ignore the warning, there is no functionality
+impeded by it. alternatively i can look into packaging carton from
+https://github.com/rejeep/carton.
 *** DONE during org html export: run-hooks: Symbol's function definition is void: adaptive-wrap-prefix-mode
 CLOSED: [2013-05-15 Wed 17:32]
 this was probably due to calling on unavailable mode in html-mode-hook
@@ -131,8 +142,8 @@ this was probably due to calling on unavailable mode in html-mode-hook
 *** CHECK paste at point of cursor instead of mouse pointer
 middle mouse click
 
-C-h k Middle-mouse-click tells me that the function run on middle
-mouse click is mouse-yank-primary, which inserts at point if the
-variable mouse-yank-at-point is non-nil.
+C-h k Middle-mouse-click tells me that the function run on
+middle mouse click is mouse-yank-primary, which inserts at point if
+the variable mouse-yank-at-point is non-nil.
 
 added to chaoflows config.
