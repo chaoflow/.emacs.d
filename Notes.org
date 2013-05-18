@@ -138,7 +138,10 @@ CLOSED: [2013-05-15 Wed 17:32]
 this was probably due to calling on unavailable mode in html-mode-hook
 (cfl). commented out.
 
-*** TODO magit-status destroys window layout. should be in current window?
+*** CHECK magit-status destroys window layout. should be in current window?
+this is a FEATURE, NOT A BUG introduced in setup-magit.el. i'm
+unanimous in this regard, so i commented the respective lines out.
+
 *** CHECK paste at point of cursor instead of mouse pointer
 middle mouse click
 

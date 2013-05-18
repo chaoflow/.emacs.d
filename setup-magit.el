@@ -24,37 +24,37 @@
 
 (define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
 
-;; full screen magit-status
+;; ;; full screen magit-status
 
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
+;; (defadvice magit-status (around magit-fullscreen activate)
+;;   (window-configuration-to-register :magit-fullscreen)
+;;   ad-do-it
+;;   (delete-other-windows))
 
-(defun magit-quit-session ()
-  "Restores the previous window configuration and kills the magit buffer"
-  (interactive)
-  (kill-buffer)
-  (jump-to-register :magit-fullscreen))
+;; (defun magit-quit-session ()
+;;   "Restores the previous window configuration and kills the magit buffer"
+;;   (interactive)
+;;   (kill-buffer)
+;;   (jump-to-register :magit-fullscreen))
 
-(define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+;; (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
-;; full screen vc-annotate
+;; ;; full screen vc-annotate
 
-(defun vc-annotate-quit ()
-  "Restores the previous window configuration and kills the vc-annotate buffer"
-  (interactive)
-  (kill-buffer)
-  (jump-to-register :vc-annotate-fullscreen))
+;; (defun vc-annotate-quit ()
+;;   "Restores the previous window configuration and kills the vc-annotate buffer"
+;;   (interactive)
+;;   (kill-buffer)
+;;   (jump-to-register :vc-annotate-fullscreen))
 
-(eval-after-load "vc-annotate"
-  '(progn
-     (defadvice vc-annotate (around fullscreen activate)
-       (window-configuration-to-register :vc-annotate-fullscreen)
-       ad-do-it
-       (delete-other-windows))
+;; (eval-after-load "vc-annotate"
+;;   '(progn
+;;      (defadvice vc-annotate (around fullscreen activate)
+;;        (window-configuration-to-register :vc-annotate-fullscreen)
+;;        ad-do-it
+;;        (delete-other-windows))
 
-     (define-key vc-annotate-mode-map (kbd "q") 'vc-annotate-quit)))
+;;      (define-key vc-annotate-mode-map (kbd "q") 'vc-annotate-quit)))
 
 ;; ignore whitespace
 
