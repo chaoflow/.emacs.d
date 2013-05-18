@@ -81,7 +81,25 @@ http://julien.danjou.info/projects/emacs-packages#org-contacts
 - integration into message mode
 - new contacts through captures
 
-@coroa: how would/could that be used for notmuch address completion?
+***** @coroa: how would/could that be used for notmuch address completion?
+a simple
+#+begin_src emacs-lisp
+(require 'org-contacts (concat site-lisp-dir "/org-mode/contrib/lisp/org-contacts"))
+(setq org-contacts-files '("~/notes/contacts.org"))
+#+end_src
+should automatically provide tab completion in message-mode of
+contacts from ~/notes/contacts.org (if org-contacts-files is nil all
+agenda files will be used instead).
+
+a typical capture template would look like this (from org-contacts.el)
+#+begin_src emacs-lisp
+  ("c" "Contacts" entry (file "~/Org/contacts.org")
+   "* %(org-contacts-template-name)
+  :PROPERTIES:
+  :EMAIL: %(org-contacts-template-email)
+  :END:")
+#+end_src
+
 **** BBDBv3
 http://savannah.nongnu.org/projects/bbdb/
 - integration into message mode
