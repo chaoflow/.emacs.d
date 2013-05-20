@@ -3,7 +3,7 @@
 * wishlist/status
 ** python
 based on elpy, needs testing
-*** TEST eldoc error: (void-variable virtualenv-workon-session)
+*** CHECK eldoc error: (void-variable virtualenv-workon-session)
 
 hopefully fixed by 7a5b471.
 ** org-mode
