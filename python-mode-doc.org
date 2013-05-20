@@ -88,6 +88,34 @@ combine that with narrowing to operate only on a part of the
 buffer. C-x n n narrows to active region. C-x n w widens again.
 C-x n d narrows to current function.
 
+** configuration
+elpy itself doesn't feature many configurational knobs. a few of its
+many dependencies do, though. if you want to know more about a
+specific variable position point at it and issue C-h v RET to bring
+up its full documentation. A good way to learn about more
+configurable variables is M-x customize-group RET <packagename> RET,
+with <packagename> as auto-complete, f.ex..
+
+*** auto-complete
+|---------------------+----------------------------------------|
+| ac-auto-start       | start completion automatically         |
+| ac-auto-show-menu   | show the completion menu automatically |
+| ac-use-quick-help   | show python documentation in a popup   |
+| ac-quick-help-delay | delay after which to show quick help   |
+|---------------------+----------------------------------------|
+
+*** flymake
+is used to show lines offending flake8 rules by exclamation marks in
+the window's fringe.
+
+|---------------------------------------+------------------------------------------------|
+| python-check-command                  | command used to check a file instead of flake8 |
+| flymake-no-changes-timeout            | idle time after which to re-run the checker    |
+| flymake-start-syntax-check-on-newline | whether to trigger the checker on newline      |
+|---------------------------------------+------------------------------------------------|
+
+
+
 
 * Footnotes
 
