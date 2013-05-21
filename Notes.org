@@ -148,6 +148,8 @@ unanimous in this regard, so i commented the respective lines out.
 
 Will see how this feels. It looks like the "restoring window
 configuration" part is broken in the feature.
+
+Hmm ... just tried again, and it seems to work for me (coroa)
 *** DONE paste at point of cursor instead of mouse pointer
 CLOSED: [2013-05-21 Tue 17:55]
 middle mouse click
