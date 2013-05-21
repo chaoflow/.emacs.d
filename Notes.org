@@ -3,7 +3,8 @@
 * wishlist/status
 ** python
 based on elpy, needs testing
-*** CHECK eldoc error: (void-variable virtualenv-workon-session)
+*** DONE eldoc error: (void-variable virtualenv-workon-session)
+CLOSED: [2013-05-21 Tue 18:02]
 
 hopefully fixed by 7a5b471.
 ** org-mode
@@ -14,18 +15,18 @@ This is shown at the very beginning of the line, I'm pretty sure it
 used to be shown indented.
 
 Indentation works again. Not sure why.
-** calendar year view
-*** not sure how to achieve this sanely
-*** switching between months in calfw takes ages for me
-*** issues
-**** DONE Debugger entered--Lisp error: (void-function org-defvaralias)
-     org-defvaralias(org-agenda-filter-preset org-agenda-tag-filter-preset)
+** calendar views
+*** DONE Debugger entered--Lisp error: (void-function org-defvaralias)
+org-defvaralias(org-agenda-filter-preset org-agenda-tag-filter-preset)
 
-     eval-buffer(#<buffer  *load*-351332> nil "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)  ; Reading at buffer position 1104
-     load-with-code-conversion("/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)
-     require(calfw-org)
-     eval-buffer(#<buffer  *load*-682636> nil "/home/cfl/.emacs.d/users/cfl/init.el" nil t)  ; Reading at buffer position 2711
-** speedup calfw/org calendars
+eval-buffer(#<buffer  *load*-351332> nil "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)  ; Reading at buffer position 1104
+load-with-code-conversion("/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" "/home/cfl/.emacs.d/site-lisp/calfw/calfw-org.el" nil t)
+require(calfw-org)
+eval-buffer(#<buffer  *load*-682636> nil "/home/cfl/.emacs.d/users/cfl/init.el" nil t)  ; Reading at buffer position 2711
+*** TODO calendar year view
+not sure how to achieve this sanely
+*** TODO speedup calfw/org calendars
+switching between months in calfw takes ages for me
 ** html
 *** DONE all tabs
 *** DONE tab is displayed as two spaces
@@ -108,13 +109,15 @@ http://savannah.nongnu.org/projects/bbdb/
 *** It feels just an org file could do it
 **** grep the org file for email addresses and use these for notmuch
 ** Issues
-*** CHECK find: `elpa/ecukes-*/ecukes': No such file or directory
+*** DONE find: `elpa/ecukes-*/ecukes': No such file or directory
+CLOSED: [2013-05-21 Tue 18:04]
 make[1]: Entering directory `/home/cfl/.emacs.d/site-lisp/tagedit'
 carton exec  features
 make[1]: carton: Command not found
 make[1]: *** [all] Error 127
 
-**** CHECK elpa/ecukes should not be installed by elpa
+**** DONE elpa/ecukes should not be installed by elpa
+CLOSED: [2013-05-21 Tue 18:04]
 try removing the directory alltogether. one can always remove
 everything in there freely. it will always be pulled back in at the
 next start of emacs.
@@ -138,11 +141,15 @@ CLOSED: [2013-05-15 Wed 17:32]
 this was probably due to calling on unavailable mode in html-mode-hook
 (cfl). commented out.
 
-*** CHECK magit-status destroys window layout. should be in current window?
+*** DONE magit-status destroys window layout. should be in current window?
+CLOSED: [2013-05-21 Tue 17:58]
 this is a FEATURE, NOT A BUG introduced in setup-magit.el. i'm
 unanimous in this regard, so i commented the respective lines out.
 
-*** CHECK paste at point of cursor instead of mouse pointer
+Will see how this feels. It looks like the "restoring window
+configuration" part is broken in the feature.
+*** DONE paste at point of cursor instead of mouse pointer
+CLOSED: [2013-05-21 Tue 17:55]
 middle mouse click
 
 C-h k Middle-mouse-click tells me that the function run on
