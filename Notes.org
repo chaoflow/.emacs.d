@@ -150,3 +150,12 @@ middle mouse click is mouse-yank-primary, which inserts at point if
 the variable mouse-yank-at-point is non-nil.
 
 added to chaoflows config.
+
+*** TODO Proper color themes
+some ideas, open for suggestions. At most I have strong opinions but
+actually no clue what is good. Is there a point in having low
+contrast?
+**** TODO high contrast, white background
+for working in the sun
+**** TODO high contrast, dark background
+for working in dark surroundings
