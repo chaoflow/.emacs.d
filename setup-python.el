@@ -3,6 +3,8 @@
 
 ;;; elpy
 
+(require 'elpy)
+
 (elpy-enable t)
 (add-to-list 'python-mode-hook 'elpy-initialize-local-variables)
 (elpy-use-ipython)

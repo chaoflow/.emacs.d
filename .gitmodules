@@ -52,3 +52,6 @@
 [submodule "site-lisp/calfw"]
 	path = site-lisp/calfw
 	url = git://github.com/kiwanami/emacs-calfw.git
+[submodule "site-lisp/elpy"]
+	path = site-lisp/elpy
+	url = git://github.com/jorgenschaefer/elpy.git
