@@ -11,8 +11,8 @@
 (setq org-log-into-drawer t
       org-todo-keywords '((sequence "❢" "✔"))
       org-footnote-auto-adjust t
-      ;; org-goto-interface 'outline-path-completion
-      )
+      org-goto-interface 'outline-path-completion
+      org-outline-path-complete-in-steps nil)
 
 ;;; auto-fill
 (add-hook 'org-mode-hook 'turn-on-auto-fill)

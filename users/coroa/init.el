@@ -34,12 +34,6 @@
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 
 
-;; ido
-(setq ido-use-filename-at-point t
-      ido-default-file-method 'selected-window
-      ido-case-fold t)
-
-
 ;;; blinking cursors suck
 (blink-cursor-mode 0)
 
@@ -91,11 +85,6 @@
 (autoload 'php-mode "php-mode" "PHP editing mode." t)
 
 
-;;; hungry delete
-(global-set-key "" (quote hungry-delete-forward))
-(global-set-key "" (quote hungry-delete-backward))
-
-
 ;;; windmove
 (windmove-default-keybindings)
 
@@ -131,30 +120,15 @@
     (interactive)
     (ido-initiate-auto-merge (current-buffer))))
 
-;;; just show don't try to raise (because raising often doesn't work)
-(setq ido-default-buffer-method 'selected-window)
+
+(setq ido-use-filename-at-point t
+      ido-default-file-method 'selected-window
+      ido-case-fold t
+      ido-default-buffer-method 'selected-window)
 
 
-;;; ERC Config
-(setq erc-email-userid "coroa@online.de"
-      erc-nick (user-login-name)
-      erc-user-full-name "Jonas"
-      erc-server "irc.freenode.net"
-      erc-fill-function 'erc-fill-variable
-      ;; erc-autojoin-channels-alist '(("freenode.net" "#bewelcome" "#patterns"))
-      erc-hide-list '("JOIN" "NICK" "PART" "QUIT" "MODE"))
-      ;; #1987.4
-
-(add-hook 'erc-echo-notice-hook 'erc-echo-notice-in-minibuffer)
-
-(defun erc-pumuckl ()
-  "Connect to ZNC on Pumuckl."
-  (interactive)
-  (erc-tls :server "pumuckl.fsr.physik.uni-potsdam.de"
-           :port 669
-           :nick "coroa"
-           :full-name "Jonas"))
-
+;;; erc
+(require 'user-erc)
 
 ;;; notmuch
 (require 'user-notmuch)
@@ -162,56 +136,11 @@
 ;;; gnus
 (require 'user-gnus)
 
-;;; python
-(setq python-codechecker "flake8-python2")
+;;; calfw
+(require 'user-calfw)
 
-;;; ibuffer lift
-(require 'ibuf-ext)
-(setq ibuffer-saved-filter-groups
-      '(("default"
-         ("dired" (mode . dired-mode))
-         ("erc" (mode . erc-mode))
-         ("chaoflow" (or (filename . "projects")
-                         (name . "^chaoflow\\.")
-                         (filename . ".emacs.d/src/org-sync")))
-         ("emacs-config" (or (filename . ".emacs.d")))
-         ("code" (filename . "code"))
-         ("web dev" (or (mode . html-mode)
-                        (mode . css-mode)))
-         ("subversion" (name . "\*svn"))
-         ("magit" (name . "\*magit"))
-         ("org" (or (mode . org-mode)
-                    (mode . org-agenda-mode)
-                    (filename . "OrgMode")))
-         ("gnus/notmuch" (or
-                          (mode . message-mode)
-                          (mode . bbdb-mode)
-                          (mode . mail-mode)
-                          (mode . gnus-group-mode)
-                          (mode . gnus-summary-mode)
-                          (mode . gnus-article-mode)
-                          (mode . notmuch-hello-mode)
-                          (mode . notmuch-show-mode)
-                          (mode . notmuch-search-mode)
-                          (name . "^\\.bbdb$")
-                          (name . "^\\.newsrc-dribble")
-                          (name . "^\\*OfflineIMAP\\*$")
-                          (name . "^\\*.*imap")
-                          (name . "^\\*gnus")))
-         ("help" (or
-                  (name . "\*Help\*")
-                  (name . "\*Apropos\*")
-                  (name . "\*info\*")))
-         ("emacs" (or
-                   (name . "^\\*scratch\\*$")
-                   (name . "^\\*Messages\\*$")
-                   (name . "^\\*")))))
-      ibuffer-show-empty-filter-groups nil)
-
-(add-hook 'ibuffer-mode-hook
-          (lambda ()
-            (ibuffer-auto-mode 1)
-            (ibuffer-switch-to-saved-filter-groups "default")))
+;;; ibuffer
+(require 'user-ibuffer)
 
 ;;; less smooth scrolling
 (setq smooth-scroll-margin 5)
@@ -250,3 +179,4 @@
 
 ;;; require ergonomic keybindings
 (require 'ergonomic-keybindings)
+

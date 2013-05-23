@@ -1,0 +1,48 @@
+(require 'ibuf-ext)
+(setq ibuffer-saved-filter-groups
+      '(("default"
+         ("dired" (mode . dired-mode))
+         ("erc" (mode . erc-mode))
+         ("chaoflow" (or (filename . "projects")
+                         (name . "^chaoflow\\.")
+                         (filename . ".emacs.d/src/org-sync")))
+         ("emacs-config" (or (filename . ".emacs.d")))
+         ("code" (filename . "code"))
+         ("web dev" (or (mode . html-mode)
+                        (mode . css-mode)))
+         ("subversion" (name . "\*svn"))
+         ("magit" (name . "\*magit"))
+         ("org" (or (mode . org-mode)
+                    (mode . org-agenda-mode)
+                    (filename . "OrgMode")))
+         ("gnus/notmuch" (or
+                          (mode . message-mode)
+                          (mode . bbdb-mode)
+                          (mode . mail-mode)
+                          (mode . gnus-group-mode)
+                          (mode . gnus-summary-mode)
+                          (mode . gnus-article-mode)
+                          (mode . notmuch-hello-mode)
+                          (mode . notmuch-show-mode)
+                          (mode . notmuch-search-mode)
+                          (name . "^\\.bbdb$")
+                          (name . "^\\.newsrc-dribble")
+                          (name . "^\\*OfflineIMAP\\*$")
+                          (name . "^\\*.*imap")
+                          (name . "^\\*gnus")))
+         ("help" (or
+                  (name . "\*Help\*")
+                  (name . "\*Apropos\*")
+                  (name . "\*info\*")))
+         ("emacs" (or
+                   (name . "^\\*scratch\\*$")
+                   (name . "^\\*Messages\\*$")
+                   (name . "^\\*")))))
+      ibuffer-show-empty-filter-groups nil)
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-auto-mode 1)
+            (ibuffer-switch-to-saved-filter-groups "default")))
+
+(provide 'user-ibuffer)
