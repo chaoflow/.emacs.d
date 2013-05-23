@@ -26,4 +26,13 @@
       org-src-tab-acts-natively t
       org-startup-indented t)
 
+;;; a few undisputed global keybindings every org'er will want
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+(define-key org-mode-map (kbd "C-c f") 'org-footnote-action)
+
 (provide 'setup-org)

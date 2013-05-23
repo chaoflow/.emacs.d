@@ -16,12 +16,6 @@
 (add-to-list 'load-path (concat site-lisp-dir "/org-mode/contrib/lisp"))
 (require 'org-notmuch)
 
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-
-
 ;; XXX: turned off until we have something that handles multiple
 ;; languages
 (add-hook 'org-mode-hook 'flyspell-mode-off)
