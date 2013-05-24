@@ -168,3 +168,10 @@ contrast?
 for working in the sun
 **** TODO high contrast, dark background
 for working in dark surroundings
+
+*** TODO eldoc error: (error 'Param' object has no attribute 'code')
+I see this when on line:
+
+raise exc.BadRequest(dict(approval="approval not pending"))
+
+starapi validation.py
