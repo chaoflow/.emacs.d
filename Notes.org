@@ -175,3 +175,10 @@ I see this when on line:
 raise exc.BadRequest(dict(approval="approval not pending"))
 
 starapi validation.py
+
+** TODO jabber
+What options do we have?
+
+*** integration with address book
+
+*** integration with org-mode
