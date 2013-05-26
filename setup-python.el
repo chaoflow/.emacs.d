@@ -35,6 +35,18 @@
      (setq elpy-rpc-inhibit t)
      (error (concat (cadr err) "; inhibiting further rpc tries.")))))
 
+(defadvice elpy-rpc-open (around manipulate-python-path activate)
+  "Prepends the site-lisp directory of elpy to the PYTHONPATH
+environment variable to ensure that lisp and python code match
+each other."
+  (let ((pythonpath (getenv "PYTHONPATH")))
+    (unwind-protect
+        (progn
+          (setenv "PYTHONPATH" (concat site-lisp-dir "/elpy"
+                                       (when pythonpath
+                                         (concat ":" pythonpath))))
+          ad-do-it)
+      (setenv "PYTHONPATH" pythonpath))))
 
 (defadvice elpy-project-root (around silent-elpy-project-root activate)
   "Don't ask for a project-root. If it's not there, it's not there."

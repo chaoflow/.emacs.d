@@ -169,12 +169,18 @@ for working in the sun
 **** TODO high contrast, dark background
 for working in dark surroundings
 
-*** TODO eldoc error: (error 'Param' object has no attribute 'code')
+*** CHECK eldoc error: (error 'Param' object has no attribute 'code')
 I see this when on line:
 
 raise exc.BadRequest(dict(approval="approval not pending"))
 
 starapi validation.py
+
+
+@chaoflow
+i THINK this is solved by the current commit "make elpy use the python source
+from the git repo" (no hash because there is no way to do that,
+within one commit :P).
 
 ** TODO jabber
 What options do we have?
