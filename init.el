@@ -100,6 +100,7 @@
 ;; (eval-after-load 'shell '(require 'setup-shell))
 ;; (require 'setup-hippie)
 (require 'setup-yasnippet)
+(eval-after-load 'whitespace '(require 'setup-whitespace))
 ;; (require 'setup-perspective)
 ;; (require 'setup-ffip)
 ;; (require 'setup-paredit)
