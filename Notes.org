@@ -186,5 +186,8 @@ within one commit :P).
 What options do we have?
 
 *** integration with address book
-
 *** integration with org-mode
+** TODO browsing the web
+When reading through wikipedia and like-wise sites, i.e. mostly
+textual, some graphical content, no videos, it would be handy to do so
+within emacs for convenient note-taking.
