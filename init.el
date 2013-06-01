@@ -92,6 +92,7 @@
 ;; (when is-mac (exec-path-from-shell-initialize))
 
 ;; Setup extensions
+(require 'setup-themes)
 (eval-after-load 'ido '(require 'setup-ido))
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
@@ -191,3 +192,7 @@
   (if (file-exists-p (concat user-settings-dir "/init.el"))
       (load (concat user-settings-dir "/init"))
     (mapc 'load (directory-files user-settings-dir nil "^[^.#].*el$"))))
+
+(when (fboundp 'cycle-themes)
+  (cycle-themes))
+
