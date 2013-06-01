@@ -9,6 +9,9 @@
 (add-to-list 'python-mode-hook 'elpy-initialize-local-variables)
 (elpy-use-ipython)
 
+;; enable project specific elpy-rpc processes
+(setq elpy-rpc-project-specific t)
+
 ;; make elpy fail gracefully and show a warning, when a necessary
 ;; module is missing
 
