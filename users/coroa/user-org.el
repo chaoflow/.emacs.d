@@ -220,4 +220,26 @@
 
 ;; (setq org-latex-format-inlinetask-function 'jho/org-latex-format-inlinetask)
 
+;;; org captures
+
+(require 'org-capture)
+
+(setq org-directory "~/notes"
+      org-default-notes-file (concat org-directory "/todo.org")
+      org-chao-notes-file (concat org-directory "/chaoflow.org")
+      org-event-notes-file (concat org-directory "/termine.org")
+      org-capture-templates
+      '(("b" "buy" entry (file+headline org-default-notes-file "To Buy")
+         "* %? :buy:\n%i\n%a")
+        ("e" "Event" entry (file+headline org-event-notes-file "Unsorted")
+         "* %? %^T\n%i\n%a")
+        ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org.gpg"))
+         "* %?\nEntered on %U\n%i\n%a")
+        ("0" "0x2c change" entry (file+datetree "/ssh:0x2c.org:/home/docs/0x2c-changelog.org")
+         "* %?\nEntered on %U by [[coroa@0x2c.org][coroa]]\n%i\n%a")
+        ("m" "Meeting" entry (file+headline org-chao-notes-file "Meetings")
+         "* %? :meeting:\n%i\n%a")
+        ("t" "Task" entry (file+headline org-chao-notes-file "Unsorted")
+         "* ❢ %?\n%i\n%a")))
+
 (provide 'user-org)
