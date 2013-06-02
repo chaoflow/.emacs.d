@@ -166,8 +166,12 @@ actually no clue what is good. Is there a point in having low
 contrast?
 **** CHECK high contrast, white background
 for working in the sun
+
+tango with modifications for better highlighting and more contrast
 **** CHECK high contrast, dark background
 for working in dark surroundings
+
+tango-dark with mods for better highlighting and more constrast
 
 *** CHECK eldoc error: (error 'Param' object has no attribute 'code')
 I see this when on line:
@@ -188,3 +192,38 @@ What options do we have?
 *** integration with address book
 
 *** integration with org-mode
+* documentation
+** python
+in separate file: [[file:python-mode-doc.org::*python%20mode%20documentation][python mode documentation]]
+** themes
+by default the themes '(tango-dark tango) are provided and can be
+cycled through by repeatedly invoking M-x cycle-themes RET .
+
+*** to change the themes cycle-themes provides
+configure the cycle-themes variable using either
+- customize
+  M-x customize-variable RET cycle-themes RET
+- edit the own config
+
+  f.ex. add (setq cycle-themes '(zenburn tango)) to a new file in
+  .emacs.d/users/<username>/user-themes.el
+
+to see what themes are available and quickly switch between them, use 
+M-x customize-themes RET.
+*** to return to the default emacs theme
+- for the current session with
+
+  M-x disable-theme RET TAB
+  be sure to use TAB to accept the default choice. RET will NOT work.
+
+  M-x cycle-theme RET
+  will continue in the cycle of themes as if nothing happened.
+
+- permanently by clearing cycle-themes either by:
+  + customizing cycle-themes
+    M-x customize-variable RET cycle-themes RET
+    and removing all entries.
+  + setting cycle-themes to nil in the own config
+    #+begin_src emacs-lisp
+      (setq cycle-themes nil)
+    #+end_src
