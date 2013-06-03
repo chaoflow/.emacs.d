@@ -101,6 +101,7 @@
 ;; (require 'setup-hippie)
 (require 'setup-yasnippet)
 (eval-after-load 'whitespace '(require 'setup-whitespace))
+(eval-after-load 'tramp '(require 'setup-tramp))
 ;; (require 'setup-perspective)
 ;; (require 'setup-ffip)
 ;; (require 'setup-paredit)
