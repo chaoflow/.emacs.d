@@ -9,6 +9,9 @@
 (add-to-list 'python-mode-hook 'elpy-initialize-local-variables)
 (elpy-use-ipython)
 
+;; enable project specific elpy-rpc processes
+(setq elpy-rpc-project-specific t)
+
 ;; make elpy fail gracefully and show a warning, when a necessary
 ;; module is missing
 
@@ -35,6 +38,22 @@
      (setq elpy-rpc-inhibit t)
      (error (concat (cadr err) "; inhibiting further rpc tries.")))))
 
+(defadvice elpy-rpc-open (around manipulate-environment activate)
+  "Prepends the site-lisp directory of elpy to the PYTHONPATH
+environment variable to ensure that lisp and python code match
+each other. And set TERM to linux to work around triggering a
+readline bug."
+  (let ((pythonpath (getenv "PYTHONPATH"))
+        (term       (getenv "TERM")))
+    (unwind-protect
+        (progn
+          (setenv "PYTHONPATH" (concat site-lisp-dir "/elpy"
+                                       (when pythonpath
+                                         (concat ":" pythonpath))))
+          (setenv "TERM" "linux")
+          ad-do-it)
+      (setenv "PYTHONPATH" pythonpath)
+      (setenv "TERM" term))))
 
 (defadvice elpy-project-root (around silent-elpy-project-root activate)
   "Don't ask for a project-root. If it's not there, it's not there."

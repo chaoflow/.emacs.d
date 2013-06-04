@@ -160,11 +160,73 @@ the variable mouse-yank-at-point is non-nil.
 
 added to chaoflows config.
 
-*** TODO Proper color themes
+*** CHECK Proper color themes
 some ideas, open for suggestions. At most I have strong opinions but
 actually no clue what is good. Is there a point in having low
 contrast?
-**** TODO high contrast, white background
+**** CHECK high contrast, white background
 for working in the sun
-**** TODO high contrast, dark background
+
+tango with modifications for better highlighting and more contrast
+**** CHECK high contrast, dark background
 for working in dark surroundings
+
+tango-dark with mods for better highlighting and more constrast
+
+*** CHECK eldoc error: (error 'Param' object has no attribute 'code')
+I see this when on line:
+
+raise exc.BadRequest(dict(approval="approval not pending"))
+
+starapi validation.py
+
+
+@chaoflow
+i THINK this is solved by the current commit "make elpy use the python source
+from the git repo" (no hash because there is no way to do that,
+within one commit :P).
+
+** TODO jabber
+What options do we have?
+
+*** integration with address book
+*** integration with org-mode
+** TODO browsing the web
+When reading through wikipedia and like-wise sites, i.e. mostly
+textual, some graphical content, no videos, it would be handy to do so
+within emacs for convenient note-taking.
+* documentation
+** python
+in separate file: [[file:python-mode-doc.org::*python%20mode%20documentation][python mode documentation]]
+** themes
+by default the themes '(tango-dark tango) are provided and can be
+cycled through by repeatedly invoking M-x cycle-themes RET .
+
+*** to change the themes cycle-themes provides
+configure the cycle-themes variable using either
+- customize
+  M-x customize-variable RET cycle-themes RET
+- edit the own config
+
+  f.ex. add (setq cycle-themes '(zenburn tango)) to a new file in
+  .emacs.d/users/<username>/user-themes.el
+
+to see what themes are available and quickly switch between them, use 
+M-x customize-themes RET.
+*** to return to the default emacs theme
+- for the current session with
+
+  M-x disable-theme RET TAB
+  be sure to use TAB to accept the default choice. RET will NOT work.
+
+  M-x cycle-theme RET
+  will continue in the cycle of themes as if nothing happened.
+
+- permanently by clearing cycle-themes either by:
+  + customizing cycle-themes
+    M-x customize-variable RET cycle-themes RET
+    and removing all entries.
+  + setting cycle-themes to nil in the own config
+    #+begin_src emacs-lisp
+      (setq cycle-themes nil)
+    #+end_src

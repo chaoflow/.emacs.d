@@ -1,7 +1,7 @@
 ;;; theme
-(add-to-list 'custom-theme-load-path user-settings-dir)
-(setq custom-safe-themes '("4742e7b5664c09989997119e29b0e07198659e4f2e8484a5cd7c11a39ab102e1" default))
-(load-theme 'tango-dark-better-highlight)
+;; (add-to-list 'custom-theme-load-path user-settings-dir)
+;; (setq custom-safe-themes '("4742e7b5664c09989997119e29b0e07198659e4f2e8484a5cd7c11a39ab102e1" default))
+;; (load-theme 'tango-dark-better-highlight)
 
 (eval-after-load 'setup-magit
   '(progn

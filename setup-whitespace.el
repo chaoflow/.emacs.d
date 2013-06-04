@@ -2,6 +2,6 @@
 ;;; after empty lines and interferes with popup.el, so remove it from
 ;;; the default setting
 
-(cl-callf2 delq 'whitespace-mark whitespace-style)
+(cl-callf2 delq 'newline-mark whitespace-style)
 
 (provide 'setup-whitespace)
