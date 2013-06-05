@@ -72,6 +72,8 @@ Example:
 
 ;;; epa mail mode for decrypting inline PGP
 
+(require 'epa-mail)
+
 (defun turn-on-epa-mail-mode ()
   (epa-mail-mode 1))
 
