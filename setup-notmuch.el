@@ -129,6 +129,12 @@ Example:
           (if (member "deleted" (notmuch-search-get-tags))
               "-deleted" "+deleted"))))
 
+;;; refresh line at pos when returning to the search buffer
+
+(defun notmuch-search-update-on-return-to-buffer ()
+  (add-hook 'window-configuration-change-hook 'notmuch-search-update-tags nil t))
+
+(add-hook 'notmuch-search-hook 'notmuch-search-update-on-return-to-buffer)
 
 ;;; org-notmuch
 
