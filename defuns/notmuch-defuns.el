@@ -1,14 +1,19 @@
 (defun notmuch-search-update-tags (&optional pos)
+  "Assynchronously update the thread at POS or point from the
+  notmuch db."
   (when (eq major-mode 'notmuch-search-mode)
-    (setq pos (or pos (point)))
-    (let* ((old-result (notmuch-search-get-result pos))
-           (threadid (plist-get old-result :thread)))
-      (when threadid
-        (notmuch-search-update-result
-         (plist-put old-result :tags
-                    (plist-get (car
-                                (notmuch-call-notmuch-json
-                                 "search" "--format=json" "--format-version=1"
-                                 (concat "thread:" threadid)))
-                               :tags))
-         pos)))))
+    (lexical-let* ((buf (current-buffer))
+                   (pos (or pos (point)))
+                   (prev-result (notmuch-search-get-result pos)))
+      (let ((threadid (plist-get prev-result :thread)))
+        (when threadid
+          (deferred:$
+            (notmuch-call-notmuch-json-deferred
+             "search" "--format=json" "--format-version=1"
+             (concat "thread:" threadid))
+            (deferred:nextc it
+              (lambda (result)
+                (setq result (plist-put prev-result :tags
+                                        (plist-get (car result) :tags)))
+                (with-current-buffer buf
+                  (notmuch-search-update-result result pos))))))))))

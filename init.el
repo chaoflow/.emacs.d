@@ -57,6 +57,7 @@
    (cons 'idomenu marmalade)
    (cons 'nose marmalade)
    (cons 'iedit marmalade)
+   (cons 'deferred marmalade)
    ;; (cons 'elpy marmalade)
 ;;    (cons 'move-text melpa)
 ;;    (cons 'gist melpa)
