@@ -133,10 +133,11 @@ Example:
 (require 'org-notmuch (concat site-lisp-dir "/org-mode/contrib/lisp/org-notmuch.el"))
 
 
-;;; more visible faces for flagged and unread
+;;; more visible faces for flagged, unread and deleted
 
 (setq notmuch-search-line-faces '(("unread" :weight bold)
-                                  ("flagged" :foreground "red")))
+                                  ("flagged" :foreground "red")
+                                  ("deleted" :foreground "gray60")))
 
 
 (provide 'setup-notmuch)
