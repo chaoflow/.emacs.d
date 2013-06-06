@@ -9,6 +9,7 @@
                     (plist-get (car
                                 (notmuch-call-notmuch-json
                                  "search" "--format=json" "--format-version=1"
+                                 "--exclude=false"
                                  (concat "thread:" threadid)))
                                :tags))
          pos)))))
