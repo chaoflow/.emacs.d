@@ -10,6 +10,7 @@
           (deferred:$
             (notmuch-call-notmuch-json-deferred
              "search" "--format=json" "--format-version=1"
+             "--exclude=false"
              (concat "thread:" threadid))
             (deferred:nextc it
               (lambda (result)
