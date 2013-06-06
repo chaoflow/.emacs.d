@@ -141,8 +141,9 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-unmatched-syntax-face ((,class (:underline  ,red-1))))
    ;; Magit faces
    `(magit-item-highlight ((,class (:background ,alum-1))))
-   ;; Org fix
-   `(org-level-6 ((,class (:inherit outline-6 :weight normal)))))
+   ;; Org faces
+   `(org-level-6 ((,class (:inherit outline-6 :weight normal))))
+   `(org-hide ((,class (:foreground ,alum-0)))))
 
   (custom-theme-set-variables
    'tango
