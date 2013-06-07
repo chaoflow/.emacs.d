@@ -154,7 +154,9 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-tag-boundary-face ((,class (:overline ,blue-1))))
    `(semantic-unmatched-syntax-face ((,class (:underline ,red-1))))
    ;; Magit faces
-   `(magit-item-highlight ((,class (:background ,alum-7))))
+   `(magit-item-highlight ((,class (:background ,alum-5.5))))
+   `(magit-diff-add ((,class (:background "#222"))))
+   `(magit-diff-del ((,class (:background "#222"))))
    ;; Org faces
    `(org-hide ((,class (:foreground "black"))))
    ;; Whitespace faces
