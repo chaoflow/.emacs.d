@@ -14,9 +14,6 @@
 ;;; ffap
 (require 'ffap)
 
-;;; magit
-(global-set-key (kbd "C-x m") 'magit-status)
-
 
 ;;; rgrep
 (global-set-key (kbd "C-x C-r") 'rgrep)
