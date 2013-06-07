@@ -61,8 +61,8 @@
 
 ;;; whitespace
 (require 'whitespace)
-(setq whitespace-style '(face trailing))
 
+;; (setq whitespace-style '(face trailing tab-mark))
 ;; (setq whitespace-style '(face indentation::space trailing))
 
 (defun turn-on-whitespace ()
