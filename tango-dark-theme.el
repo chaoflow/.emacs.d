@@ -156,7 +156,13 @@ Semantic, and Ansi-Color faces are included.")
    ;; Magit faces
    `(magit-item-highlight ((,class (:background ,alum-7))))
    ;; Org faces
-   `(org-hide ((,class (:foreground "black")))))
+   `(org-hide ((,class (:foreground "black"))))
+   ;; Whitespace faces
+   `(whitespace-indentation ((,class (:background ,alum-5))))
+   `(whitespace-empty ((,class (:background ,alum-5))))
+   `(whitespace-trailing ((,class (:background ,red-3))))
+   `(whitespace-line ((,class (:foreground ,red-1 :background nil))))
+   )
 
   (custom-theme-set-variables
    'tango-dark

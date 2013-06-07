@@ -46,8 +46,8 @@ Semantic, and Ansi-Color faces are included.")
       (alum-1 "#eeeeec") (alum-2 "#d3d7cf") (alum-3 "#babdb6")
       (alum-4 "#888a85") (alum-5 "#5f615c") (alum-6 "#2e3436")
       ;; Not in Tango palette; used for better contrast.
-      (alum-0 "white") (blue-0 "#8cc4ff") (blue-4 "#103aa7")
-      (plum-4 "#6c3576") (cham-4 "#148604")
+      (alum-0 "white") (blue-0 "#8cc4ff") (red-0 "#ff4b4b")
+      (blue-4 "#103aa7") (plum-4 "#6c3576") (cham-4 "#148604")
       (orange-4 "#c35000") (alum-7 "black"))
 
   (custom-theme-set-faces
@@ -143,7 +143,13 @@ Semantic, and Ansi-Color faces are included.")
    `(magit-item-highlight ((,class (:background ,alum-1))))
    ;; Org faces
    `(org-level-6 ((,class (:inherit outline-6 :weight normal))))
-   `(org-hide ((,class (:foreground ,alum-0)))))
+   `(org-hide ((,class (:foreground ,alum-0))))
+   ;; Whitespace faces
+   `(whitespace-indentation ((,class (:background ,alum-3))))
+   `(whitespace-empty ((,class (:background ,alum-3))))
+   `(whitespace-trailing ((,class (:background ,red-0))))
+   `(whitespace-line ((,class (:foreground ,red-2 :background nil))))
+   )
 
   (custom-theme-set-variables
    'tango
