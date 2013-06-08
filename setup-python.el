@@ -161,7 +161,7 @@ html documentation in SRC. And create it if necessary."
 
 ;;; keybindings
 
-(define-key python-mode-map (kbd "C-m") 'newline-and-indent)
+;; (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
 
 ;;; virtualenv
 
