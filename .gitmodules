@@ -55,3 +55,6 @@
 [submodule "site-lisp/elpy"]
 	path = site-lisp/elpy
 	url = git://github.com/jorgenschaefer/elpy.git
+[submodule "site-lisp/emacs-jabber"]
+	path = site-lisp/emacs-jabber
+	url = git://github.com/coroa/emacs-jabber.git
