@@ -23,6 +23,11 @@
      (set-face-attribute 'jabber-title-medium nil :height 1.0)
      (set-face-attribute 'jabber-title-small nil :height 0.8)
 
+     ;; activity
+     (setq jabber-activity-make-strings 'jabber-activity-make-strings-shorten)
+     (set-face-attribute 'jabber-activity-personal-face nil :foreground "red")
+     (set-face-attribute 'jabber-activity-face nil :foreground nil)
+
      (add-to-list 'jabber-invalid-certificate-servers "chaoflow.net")
      (add-to-list 'gnutls-trustfiles "/etc/ssl/certs/ca-bundle.crt")))
 (provide 'setup-jabber)
