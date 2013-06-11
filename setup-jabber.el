@@ -5,7 +5,7 @@
   '(progn
      ;; history
      (setq jabber-history-enabled t
-           jabber-history-muc-enabled t
+           ;; jabber-history-muc-enabled t
            jabber-use-global-history nil)
 
      ;; colour
