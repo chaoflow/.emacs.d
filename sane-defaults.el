@@ -35,7 +35,7 @@
 (prefer-coding-system 'utf-8) ; with sugar on top
 
 ;; Frame titles which are short and informative
-(setq frame-title-format "%b - Emacs")
+(setq frame-title-format '("%b - Emacs"))
 
 ;; Show active region
 (transient-mark-mode 1)

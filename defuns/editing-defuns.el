@@ -57,7 +57,6 @@ region-end is used."
 
 (defvar yank-indent-modes '(c-mode
                             lisp-mode
-                            python-mode
                             sgml-mode
                             js2-mode)
   "Modes in which to indent regions that are yanked (or yank-popped)")

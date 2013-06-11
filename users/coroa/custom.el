@@ -11,25 +11,18 @@
  '(dta-default-cfg "default.conf")
  '(font-use-system-font t)
  '(global-hl-line-mode t)
+ '(jabber-account-list (quote (("coroa@chaoflow.net/emacs") ("jonas@neko.im/emacs") ("coroan@gmail.com"))))
  '(menu-bar-mode nil)
  '(mm-text-html-renderer (quote gnus-w3m))
  '(mm-verify-option (quote known))
  '(notmuch-hello-sections (quote (notmuch-hello-insert-header notmuch-hello-insert-saved-searches notmuch-hello-insert-recent-searches notmuch-hello-insert-alltags notmuch-hello-insert-footer)))
  '(notmuch-saved-searches (quote (("inbox" . "tag:inbox") ("unread" . "tag:unread") ("flagged" . "tag:flagged"))))
- '(org-agenda-files (quote ("~/notes/chaoflow.org" "~/notes/diplom.org" "~/notes/reisen.org" "~/notes/qmio-gcalendar.org" "~/notes/goodtoknow.org" "~/notes/termine.org" "~/notes/offizielles.org" "~/notes/foodcoop.org" "~/notes/todo.org")))
+ '(org-agenda-files (quote ("~/notes/bluecher-calendar.org" "~/notes/chaoflow.org" "~/notes/diplom.org" "~/notes/reisen.org" "~/notes/goodtoknow.org" "~/notes/termine.org" "~/notes/offizielles.org" "~/notes/foodcoop.org" "~/notes/todo.org")))
  '(org-file-apps (quote ((auto-mode . emacs) ("\\.mm\\'" . default) ("\\.x?html?\\'" . default) ("\\.pdf::\\(\\d\\)\\'" . "okular -p %1 %s") ("\\.pdf\\'" . "okular %s") ("\\.xoj\\'" . "xournal %s"))))
  '(org-stuck-projects (quote ("+LEVEL=2/-DONE" ("TODO" "NEXT" "NEXTACTION") nil "Archiv")))
  '(py-shell-name "python2")
  '(safe-local-variable-values (quote ((LaTeX-verbatim-environments-local quote ("hcode" "code"))))))
 
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 112 :width normal :foundry "unknown" :family "Terminus (TTF)")))))
-
- ;; '(default ((t (:stipple nil :background "#2d3743" :foreground "#e1e1e0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 112 :width normal :foundry "unknown" :family "Terminus (TTF)")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

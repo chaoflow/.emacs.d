@@ -35,7 +35,7 @@ Basic, Font Lock, Isearch, Gnus, Message, Ediff, Flyspell,
 Semantic, and Ansi-Color faces are included.")
 
 (let ((class '((class color) (min-colors 89)))
-      ;; Tango palette colors. 
+      ;; Tango palette colors.
       (butter-1 "#fce94f") (butter-2 "#edd400") (butter-3 "#c4a000")
       (orange-1 "#fcaf3e") (orange-2 "#f57900") (orange-3 "#ce5c00")
       (choc-1 "#e9b96e") (choc-2 "#c17d11") (choc-3 "#8f5902")
@@ -46,8 +46,8 @@ Semantic, and Ansi-Color faces are included.")
       (alum-1 "#eeeeec") (alum-2 "#d3d7cf") (alum-3 "#babdb6")
       (alum-4 "#888a85") (alum-5 "#5f615c") (alum-6 "#2e3436")
       ;; Not in Tango palette; used for better contrast.
-      (alum-0 "white") (blue-0 "#8cc4ff") (blue-4 "#103aa7")
-      (plum-4 "#6c3576") (cham-4 "#148604")
+      (alum-0 "white") (blue-0 "#8cc4ff") (red-0 "#ff4b4b")
+      (blue-4 "#103aa7") (plum-4 "#6c3576") (cham-4 "#148604")
       (orange-4 "#c35000") (alum-7 "black"))
 
   (custom-theme-set-faces
@@ -141,8 +141,15 @@ Semantic, and Ansi-Color faces are included.")
    `(semantic-unmatched-syntax-face ((,class (:underline  ,red-1))))
    ;; Magit faces
    `(magit-item-highlight ((,class (:background ,alum-1))))
-   ;; Org fix
-   `(org-level-6 ((,class (:inherit outline-6 :weight normal)))))
+   ;; Org faces
+   `(org-level-6 ((,class (:inherit outline-6 :weight normal))))
+   `(org-hide ((,class (:foreground ,alum-0))))
+   ;; Whitespace faces
+   `(whitespace-indentation ((,class (:background ,alum-3))))
+   `(whitespace-empty ((,class (:background ,alum-3))))
+   `(whitespace-trailing ((,class (:background ,red-0))))
+   `(whitespace-line ((,class (:foreground ,red-2 :background nil))))
+   )
 
   (custom-theme-set-variables
    'tango

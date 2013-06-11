@@ -114,6 +114,7 @@
 (eval-after-load 'lisp-mode '(require 'setup-lisp))
 (require 'setup-org)
 (require 'setup-latex)
+(require 'setup-jabber)
 ;; (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
 ;; (eval-after-load 'clojure-mode '(require 'setup-clojure-mode))
 ;; (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))

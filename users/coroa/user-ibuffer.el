@@ -30,6 +30,10 @@
                           (name . "^\\*OfflineIMAP\\*$")
                           (name . "^\\*.*imap")
                           (name . "^\\*gnus")))
+         ("jabber" (or
+                    (mode . jabber-roster-mode)
+                    (mode . jabber-chat-mode)
+                    (mode . jabber-browse-mode)))
          ("help" (or
                   (name . "\*Help\*")
                   (name . "\*Apropos\*")
