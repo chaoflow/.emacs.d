@@ -28,6 +28,8 @@
      (set-face-attribute 'jabber-activity-personal-face nil :foreground "red")
      (set-face-attribute 'jabber-activity-face nil :foreground nil)
 
+     ;; alerts
+     (setq jabber-alert-presence-hooks nil)
      (add-to-list 'jabber-invalid-certificate-servers "chaoflow.net")
      (add-to-list 'gnutls-trustfiles "/etc/ssl/certs/ca-bundle.crt")))
 (provide 'setup-jabber)
