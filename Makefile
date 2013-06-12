@@ -7,7 +7,7 @@ site-lisp/bbdb/Makefile:
 	cd site-lisp/bbdb; autoconf; ./configure
 
 site-lisp/emacs-jabber/Makefile:
-	cd site-lisp/emacs-jabber; autoreconf; automake --add-missing; autoreconf
+	cd site-lisp/emacs-jabber; autoreconf; automake --add-missing; autoreconf; ./configure
 
 add-remotes:
 	git remote add cjohansen git://github.com/cjohansen/.emacs.d.git || true
