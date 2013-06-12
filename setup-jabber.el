@@ -30,6 +30,10 @@
 
      ;; alerts
      (setq jabber-alert-presence-hooks nil)
+
+     ;; reconnect
+     (setq jabber-auto-reconnect t)
+
      (add-to-list 'jabber-invalid-certificate-servers "chaoflow.net")
      (add-to-list 'gnutls-trustfiles "/etc/ssl/certs/ca-bundle.crt")))
 (provide 'setup-jabber)
