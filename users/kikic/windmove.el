@@ -1,0 +1,2 @@
+;;; windmove
+(windmove-default-keybindings)
