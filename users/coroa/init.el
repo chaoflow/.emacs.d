@@ -19,11 +19,6 @@
 (global-set-key (kbd "C-x C-r") 'rgrep)
 
 
-;;; font size changes
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-
-
 ;;; occur inside isearch
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)
