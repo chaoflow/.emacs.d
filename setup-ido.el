@@ -67,16 +67,15 @@ and handles the default case manually, while `completing-read'
 never has any knowledge of the default.
 
 This usage pattern breaks with ido in the edge case when there is
-no DEF, no INITIAL-INPUT, but REQUIRE-MATCH specified, because
-ido then returns the first element on the list rather than the
-empty string. This advice tries then to derive the default item
-from the prompt string by matching against \"(default
-<string>)\" or, if there is no match, it prepends the possible
-choices with the empty string, which will thus be preselected."
+no DEF and no INITIAL-INPUT because ido then returns the first
+element on the list rather than the empty string. This advice
+tries then to derive the default item from the prompt string by
+matching against \"(default <string>)\" or, if there is no match,
+it prepends the possible choices with the empty string, which
+will thus be preselected."
   (when (and ido-next-call-replaces-completing-read
              (null def)
-             (null initial-input)
-             require-match)
+             (null initial-input))
     (if (string-match "(default \\(\"?\\)\\(.+\\)\\1)" prompt)
         (setq def (match-string 2 prompt))
       (push "" choices))))
