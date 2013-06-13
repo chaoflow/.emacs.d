@@ -23,10 +23,6 @@
      (set-face-attribute 'jabber-title-medium nil :height 1.0)
      (set-face-attribute 'jabber-title-small nil :height 0.8)
 
-     ;; alerts
-     (setq jabber-alert-presence-hooks nil)
-     (callf2 delq 'jabber-message-echo jabber-alert-message-hooks)
-
      ;; reconnect
      (setq jabber-auto-reconnect t)
 
@@ -39,5 +35,11 @@
      (setq jabber-activity-make-strings 'jabber-activity-make-strings-shorten)
      (set-face-attribute 'jabber-activity-personal-face nil :foreground "red")
      (set-face-attribute 'jabber-activity-face nil :foreground nil)))
+
+(eval-after-load 'jabber-alert
+  '(progn
+     ;; alerts
+     (setq jabber-alert-presence-hooks nil)
+     (callf2 delq 'jabber-message-echo jabber-alert-message-hooks)))
 
 (provide 'setup-jabber)
