@@ -107,7 +107,7 @@
 ;; (require 'setup-paredit)
 
 ;; Language specific setup files
-;; (eval-after-load 'js2-mode '(require 'setup-js2-mode))
+(eval-after-load 'js2-mode '(require 'setup-js2-mode))
 (eval-after-load 'python '(require 'setup-python))
 (eval-after-load 'sgml-mode '(require 'setup-html-mode))
 (eval-after-load 'lisp-mode '(require 'setup-lisp))
