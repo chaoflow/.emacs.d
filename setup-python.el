@@ -194,5 +194,12 @@ Needs to be the first hook to run."
 ;; should be the last element to add to python-mode-hook, so it runs FIRST
 (add-hook 'python-mode-hook 'py-switch-to-virtualenv)
 
+;; font-lock: Use lambda for anonymous functions
+
+(font-lock-add-keywords
+ 'python-mode `(("\\(lambda\\>\\)"
+                 (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                           ,(make-char 'greek-iso8859-7 107))
+                           nil)))))
 
 (provide 'setup-python)
