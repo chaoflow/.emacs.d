@@ -19,7 +19,7 @@ relative to `erc-track-switch-direction'"
     (switch-to-buffer chat-track-last-buffer))))
 
 (eval-after-load 'erc-track
-  '(define-key erc-track-minor-mode-map (kbd "C-c C-SPC") nil))
+  '(setq erc-track-enable-keybindings nil))
 (global-set-key (kbd "C-c C-SPC") 'chat-track-switch-buffer)
 
 (provide 'setup-chat-tracking)
