@@ -122,4 +122,9 @@
     (dotimes (i 10)
       (when (= p (point)) ad-do-it))))
 
+;; don't try to raise windows when switching to a buffer, because this
+;; fails in any sane tiling window manager
+(setq ido-default-file-method 'selected-window
+      ido-default-buffer-method 'selected-window)
+
 (provide 'sane-defaults)

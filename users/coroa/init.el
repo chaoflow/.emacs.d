@@ -114,9 +114,7 @@
 
 
 (setq ido-use-filename-at-point t
-      ido-default-file-method 'selected-window
-      ido-case-fold t
-      ido-default-buffer-method 'selected-window)
+      ido-case-fold t)
 
 
 ;;; erc
