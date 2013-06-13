@@ -1,11 +1,15 @@
 *.elc
 *~
 .DS_Store
+/.emacs.desktop*
+/.mc-lists.el
+/.org-id-locations
 /.places
 /.yas-compiled-snippets.el
 /ac-comphist.dat
 /auto-save-list
 /backups
+/bookmarks
 /elpa
 /emms
 /session.*
@@ -13,3 +17,6 @@
 /swank
 /tramp
 /url/cache
+/url/cookies
+/eshell/history
+/eshell/lastdir
