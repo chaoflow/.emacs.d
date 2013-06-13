@@ -25,6 +25,7 @@
 
      ;; alerts
      (setq jabber-alert-presence-hooks nil)
+     (callf2 delq 'jabber-message-echo jabber-alert-message-hooks)
 
      ;; reconnect
      (setq jabber-auto-reconnect t)
