@@ -76,5 +76,9 @@
 
 (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)
 
+(defun set-tab-width-to-2 ()
+  "Set the tab width to 2"
+  (setq tab-width 2))
+(add-hook 'magit-mode-hook 'set-tab-width-to-2)
 
 (provide 'setup-magit)
