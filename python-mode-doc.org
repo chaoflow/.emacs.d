@@ -28,7 +28,7 @@ virtualenv directory and root/bin is added to PATH.
 if the virtualenv provides the elpy and (jedi or rope) python
 packages[fn:3], elpy will offer possible completions during typing,
 which can be activated using TAB. A drop-down menu showing all
-completions can be triggered[fn:4] by M-TAB.
+completions can be triggered[fn:4] by M-/.
 
 *** snippets
 TAB also triggers a snippet lookup. snippets are controlled by tiny
