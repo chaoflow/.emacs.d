@@ -99,7 +99,7 @@ readline bug."
 
 (eval-after-load 'auto-complete
   '(progn
-     (ac-set-trigger-key "<M-tab>")
+     (ac-set-trigger-key "M-/")
 
      (setq ac-auto-show-menu nil
            ac-use-quick-help nil)
