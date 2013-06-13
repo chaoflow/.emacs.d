@@ -10,7 +10,6 @@
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|^\\.")
  '(dta-default-cfg "default.conf")
  '(font-use-system-font t)
- '(global-hl-line-mode t)
  '(jabber-account-list (quote (("coroa@chaoflow.net/emacs") ("jonas@neko.im/emacs") ("coroan@gmail.com"))))
  '(menu-bar-mode nil)
  '(mm-text-html-renderer (quote gnus-w3m))

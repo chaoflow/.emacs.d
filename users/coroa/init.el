@@ -3,10 +3,10 @@
 ;; (setq custom-safe-themes '("4742e7b5664c09989997119e29b0e07198659e4f2e8484a5cd7c11a39ab102e1" default))
 ;; (load-theme 'tango-dark-better-highlight)
 
-(eval-after-load 'setup-magit
-  '(progn
-     (set-face-attribute 'magit-item-highlight nil :background "#414a4d")
-     (set-face-attribute 'magit-diff-none nil :inherit 'none)))
+;; (eval-after-load 'setup-magit
+;;   '(progn
+;;      (set-face-attribute 'magit-item-highlight nil :background "#414a4d")
+;;      (set-face-attribute 'magit-diff-none nil :inherit 'none)))
 
 ;;; diff extras
 (setq diff-switches "-u")
