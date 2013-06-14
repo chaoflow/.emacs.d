@@ -40,6 +40,7 @@
   '(progn
      ;; alerts
      (setq jabber-alert-presence-hooks nil)
-     (callf2 delq 'jabber-message-echo jabber-alert-message-hooks)))
+     (callf2 delq 'jabber-message-echo jabber-alert-message-hooks)
+     (callf2 delq 'jabber-muc-echo jabber-alert-muc-hooks)))
 
 (provide 'setup-jabber)
