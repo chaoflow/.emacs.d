@@ -127,4 +127,7 @@
 (setq ido-default-file-method 'selected-window
       ido-default-buffer-method 'selected-window)
 
+;; highlight the current line in all buffers
+(global-hl-line-mode 1)
+
 (provide 'sane-defaults)
