@@ -27,7 +27,14 @@
      (setq jabber-auto-reconnect t)
 
      (add-to-list 'jabber-invalid-certificate-servers "chaoflow.net")
-     (add-to-list 'gnutls-trustfiles "/etc/ssl/certs/ca-bundle.crt")))
+     (add-to-list 'gnutls-trustfiles "/etc/ssl/certs/ca-bundle.crt")
+
+     ;; jabber - muc names binding
+
+     (defun bind-jabber-muc-names ()
+       (when jabber-group
+         (local-set-key (kbd "C-c C-n") 'jabber-muc-names)))
+     (add-hook 'jabber-chat-mode-hook 'bind-jabber-muc-names)))
 
 (eval-after-load 'jabber-activity
   '(progn
