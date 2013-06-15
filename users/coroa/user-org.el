@@ -231,6 +231,7 @@
       org-capture-templates
       '(("b" "buy" entry (file+headline org-default-notes-file "To Buy")
          "* %? :buy:\n%i\n%a")
+        ("t" "Task" entry (file+headline org-default-notes-file "Unsortiert"))
         ("e" "Event" entry (file+headline org-event-notes-file "Unsorted")
          "* %? %^T\n%i\n%a")
         ("j" "Journal" entry (file+datetree (concat org-directory "/journal.org.gpg"))
@@ -239,7 +240,7 @@
          "* %?\nEntered on %U by [[coroa@0x2c.org][coroa]]\n%i\n%a")
         ("m" "Meeting" entry (file+headline org-chao-notes-file "Meetings")
          "* %? :meeting:\n%i\n%a")
-        ("t" "Task" entry (file+headline org-chao-notes-file "Unsorted")
+        ("c" "ChaoTask" entry (file+headline org-chao-notes-file "Unsorted")
          "* ❢ %?\n%i\n%a")))
 
 (provide 'user-org)

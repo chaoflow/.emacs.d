@@ -2,7 +2,7 @@
 
 (defun notmuch-unread ()
   (interactive)
-  (notmuch-search "tag:unread"))
+  (notmuch-search "tag:unread tag:flagged"))
 
 (global-set-key [f12] 'notmuch)
 (global-set-key [(shift f12)] 'notmuch-unread)
