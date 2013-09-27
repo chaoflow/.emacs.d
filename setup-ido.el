@@ -10,6 +10,13 @@
       ido-use-filename-at-point nil
       ido-max-prospects 10)
 
+(defun ido-find-file-maybe-at-point (&optional arg)
+  (interactive "P")
+  (if arg
+      (let ((ido-use-filename-at-point (not ido-use-filename-at-point)))
+        (ido-find-file))
+    (ido-find-file)))
+
 (add-hook
  'ido-setup-hook
  (lambda ()
