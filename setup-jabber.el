@@ -1,6 +1,10 @@
 (require 'jabber-autoloads
          (concat site-lisp-dir "/emacs-jabber/jabber-autoloads") t)
 
+;;; dired-x's dired-jump binding C-x C-j conflicts with jabber
+;;; it must be disabled BEFORE require'ing dired-x
+(setq dired-bind-jump nil)
+
 (eval-after-load 'jabber
   '(progn
      ;; history
