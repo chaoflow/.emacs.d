@@ -49,6 +49,7 @@
    (cons 'rainbow-delimiters marmalade)
 ;;    (cons 'exec-path-from-shell melpa)
    (cons 'magit melpa)
+   (cons 'magit-svn melpa)
    (cons 'paredit melpa)
    (cons 'flymake-cursor melpa)
    (cons 'auto-complete marmalade)
