@@ -24,7 +24,9 @@
 
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t
-      org-startup-indented t)
+      org-startup-indented t
+      org-log-into-drawer t
+      org-time-clocksum-format '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 ;;; a few undisputed global keybindings every org'er will want
 
