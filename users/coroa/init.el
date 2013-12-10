@@ -151,7 +151,7 @@
   (interactive)
   (with-current-buffer
       (with-current-buffer
-          (find-file-noselect (expand-file-name "~/notes/chaoflow.org"))
+          (find-file-noselect (expand-file-name "~/dev/clocking/coroa.org"))
         (org-block-map (lambda ()
                          (let ((tags (nth 5 (org-heading-components))))
                            (when (and (stringp tags) (string-match ":due:" tags)) (org-dblock-update)))))
@@ -161,6 +161,8 @@
             (org-ascii-export-as-ascii nil nil nil t))))
     (write-file "/0x2c.org:due.txt")
     (kill-buffer)))
+
+(require 'clocking)
 
 ;;; session restart
 (setq desktop-load-locked-desktop t)
