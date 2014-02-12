@@ -104,4 +104,36 @@
 ;;; paste at point instead of under mouse pointer
 (setq mouse-yank-at-point t)
 
+
+;;; owncloud calendar synchronization
+
+;;; synchronization is set into motion calling M-x org-caldav-sync.
+
+;;; every heading which is changed or deleted due to a change in
+;;; owncloud is appended to ~/.emacs.d/org-caldav-backup.org
+
+;;; WARNING: this will add an uuid4 to EVERY heading in all files from
+;;; :files
+;;; also refer to documentation at https://github.com/coroa/org-caldav
+
+(require 'org-caldav)
+
+(setq org-caldav-url "https://0x2c.org/oc/remote.php/caldav/calendars/cf1"
+      ;; increase debugging output in *org-caldav-debug* buffer
+      ;; org-caldav-debug-level 2
+      org-caldav-calendars '((:calendar-id "office"
+                              ; forms the url together with
+                              ; org-caldav-url
+                                           :files ("~/org/office.org")
+                                           :inbox (file+headline "~/org/office.org" "Inbox")
+                                           ;; :select-tags ("office")
+                                           ;; to narrow to specific tags
+                                           )
+                             (:calendar-id "personal"
+                                           :files ("~/org/personal.org")
+                                           :inbox (file+headline "~/org/personal.org" "Inbox")
+                                           ;; :select-tags ("personal")
+                                           ;; :url "https://..."
+                                           )))
+
 (require 'znc)
