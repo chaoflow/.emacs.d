@@ -52,6 +52,7 @@
    (cons 'magit-svn melpa)
    (cons 'paredit melpa)
    (cons 'flymake-cursor melpa)
+   (cons 'stylus-mode melpa)
    (cons 'auto-complete marmalade)
    (cons 'highlight-indentation marmalade)
    (cons 'find-file-in-project marmalade)

@@ -18,10 +18,10 @@
 (add-to-list 'auto-mode-alist '("\\.adv$" . adventur-mode))
 
 ;; Jade and Stylus (sws = significant whitespace)
-(autoload 'sws-mode "sws-mode")
-(autoload 'jade-mode "jade-mode")
-(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
-(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+;; (autoload 'sws-mode "sws-mode")
+;; (autoload 'jade-mode "jade-mode")
+;; (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+;; (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 ;; HTML
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-mode))
