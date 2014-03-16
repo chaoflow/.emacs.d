@@ -116,24 +116,29 @@
 ;;; :files
 ;;; also refer to documentation at https://github.com/coroa/org-caldav
 
+
 (require 'org-caldav)
 
-(setq org-caldav-url "https://0x2c.org/oc/remote.php/caldav/calendars/cf1"
+(setq org-caldav-url "https://0x2c.org/radicale/flo"
       ;; increase debugging output in *org-caldav-debug* buffer
-      ;; org-caldav-debug-level 2
-      org-caldav-calendars '((:calendar-id "office"
-                              ; forms the url together with
-                              ; org-caldav-url
-                                           :files ("~/org/office.org")
-                                           :inbox (file+headline "~/org/office.org" "Inbox")
-                                           ;; :select-tags ("office")
-                                           ;; to narrow to specific tags
-                                           )
-                             (:calendar-id "personal"
-                                           :files ("~/org/personal.org")
-                                           :inbox (file+headline "~/org/personal.org" "Inbox")
-                                           ;; :select-tags ("personal")
-                                           ;; :url "https://..."
-                                           )))
+      org-caldav-debug-level 2
+      org-caldav-calendars
+      '(
+        (:calendar-id "office"
+                      :url "https://0x2c.org/radicale/chaoflownet"
+                      :files ("~/org/office.org")
+                      :inbox (file+headline "~/org/office.org"
+                                            "INBOX")
+                      ;; :select-tags ("office")
+                      ;; to narrow to specific tags
+                      )
+        (:calendar-id "personal"
+                      :files ("~/org/personal.org")
+                      :inbox (file+headline "~/org/personal.org"
+                                            "INBOX")
+                      ;; :select-tags ("personal")
+                      )
+      ))
+
 
 (require 'znc)
