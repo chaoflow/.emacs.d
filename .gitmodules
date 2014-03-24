@@ -60,4 +60,4 @@
 	url = git://github.com/coroa/emacs-jabber.git
 [submodule "site-lisp/org-caldav"]
 	path = site-lisp/org-caldav
-	url = git@github.com:coroa/org-caldav.git
+	url = git@github.com:chaoflownet/org-caldav.git
