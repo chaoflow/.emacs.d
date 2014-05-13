@@ -8,7 +8,7 @@ div.class#id
 Ember.View %tag#id.class
 .class
 
-/ div
+div
   div-foo %foo.class#id
     div
     div
