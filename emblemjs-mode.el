@@ -46,7 +46,7 @@ text nested beneath them.")
 
 ;; Font lock
 
-;; Helper for nested block (comment, embedded, text)
+;; Helper for nested block (comment, text)
 (defun emblemjs-nested-re (re)
   (concat "^\\( *\\)" re "\n\\(?:\\(?:\\1 .*\\)\n\\)*"))
 
@@ -97,18 +97,16 @@ text nested beneath them.")
     ))
 
 
-(defconst emblemjs-embedded-re "^ *[a-z0-9_-]+:")
 (defconst emblemjs-comment-re  "^ */")
 
 (defun* emblemjs-extend-region ()
-  "Extend the font-lock region to encompass embedded engines and comments."
+  "Extend the font-lock region to encompass comments."
   (let ((old-beg font-lock-beg)
         (old-end font-lock-end))
     (save-excursion
       (goto-char font-lock-beg)
       (beginning-of-line)
-      (unless (or (looking-at emblemjs-embedded-re)
-                  (looking-at emblemjs-comment-re))
+      (unless (looking-at emblemjs-comment-re)
         (return-from emblemjs-extend-region))
       (setq font-lock-beg (point))
       (emblemjs-forward-sexp)
