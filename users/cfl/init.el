@@ -141,3 +141,24 @@
 
 
 (require 'znc)
+
+(setq debug-on-error t)
+
+(global-set-key
+ "\C-xm"
+ (lambda ()
+   (interactive)
+   (load-library (symbol-name major-mode))
+   (execute-extended-command "" (symbol-name major-mode))))
+
+
+;;; sprunge
+(defun sprunge (prefix)
+  "Posts the current buffer to sprunge, and shows the resulting URL in a new buffer"
+  (interactive "P")
+  (let ((filename "/tmp/sprunge-post"))
+    (if prefix (write-file filename) (write-region (region-beginning) (region-end) filename)) ; if invoked with the universal argument / prefix, upload the whole file, else upload just the region
+    (insert (shell-command-to-string (concat "curl -s -F 'sprunge=<" filename "' http://sprunge.us")))
+    (delete-char -1))) ; Newline after URL
+
+
