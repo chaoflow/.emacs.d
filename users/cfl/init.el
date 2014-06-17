@@ -119,20 +119,19 @@
 
 (require 'org-caldav)
 
-(setq org-caldav-url "https://0x2c.org/radicale/flo"
+(setq org-caldav-url "https://0x2c.org/radicale"
       ;; increase debugging output in *org-caldav-debug* buffer
       org-caldav-debug-level 2
       org-caldav-calendars
       '(
-        (:calendar-id "office"
-                      :url "https://0x2c.org/radicale/chaoflownet"
+        (:calendar-id "chaoflownet/office"
                       :files ("~/org/office.org")
                       :inbox (file+headline "~/org/office.org"
                                             "INBOX")
                       ;; :select-tags ("office")
                       ;; to narrow to specific tags
                       )
-        (:calendar-id "personal"
+        (:calendar-id "flo/personal"
                       :files ("~/org/personal.org")
                       :inbox (file+headline "~/org/personal.org"
                                             "INBOX")
