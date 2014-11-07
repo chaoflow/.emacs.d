@@ -12,6 +12,10 @@
          "-deleted" "+deleted"))))
 
 
+;;; less smooth scrolling
+(setq smooth-scroll-margin 5)
+
+
 ;; org
 (add-to-list 'load-path (concat site-lisp-dir "/org-mode/contrib/lisp"))
 (require 'org-notmuch)
