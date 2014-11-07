@@ -13,7 +13,6 @@
 /elpa
 /emms
 /session.*
-/site-lisp/adventur-mode
 /swank
 /tramp
 /url/cache
